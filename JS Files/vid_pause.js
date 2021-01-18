@@ -44,7 +44,7 @@ var time_per_frame =0;
 // console.log(time_per_frame)
 
 var video = document.getElementById('vid1');
-video.controls = true; 
+video.controls = false; 
 var pause_dur = 1000;
 var pause_on = true; 
 // listen on the event
