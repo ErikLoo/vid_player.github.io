@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="CSS Files/panel_styles.css">
     <!-- <link rel="stylesheet" href="CSS Files/snackbar.css"> -->
     <link rel="stylesheet" href="CSS Files/new_snack_bar.css">
+    <link rel="stylesheet" href="CSS Files/snackbar.css">
+
 
 
     <style type="text/css">
         body {
-            max-width: 1200px;
+            max-width: 2000px;
             background: white;
             margin-left: auto;
             margin-right: auto;
@@ -160,6 +162,7 @@
             </div> -->
 
             <div id="snackbar"><p id="time_left" style="display: inline;">X</p></div>
+            <div id="vid_control_snackbar"><p id="vid_status" style="display: inline;">X</p></div>
 
 
         </div>
@@ -238,7 +241,7 @@
     <div class="tab-panels">
         <ul class="tabs">
             <li rel="panel1" vid = "videos/sending_zoom_invite_Trim_Trim.mp4" task = "Task 1: Sending Zoom Invite" class="active1" Name="gtab">Task 1</li>
-            <li rel="panel2" vid = "videos/create email rule_Trim.mp4" task = "Task 2: Creating E-mail Rules" Name="btab">Task 2</li>
+            <li rel="panel2" vid = "videos/create email rule_Trim_Trim.mp4" task = "Task 2: Creating E-mail Rules" Name="btab">Task 2</li>
             <li rel="panel3" vid = "videos/create youtube playlist_Trim_Trim.mp4" task = "Task 3: Creating YouTube Playlists" Name="btab">Task 3</li>
             <button onclick="hide_setting()" style="float: right;
             margin-right: 30px;
@@ -406,18 +409,25 @@
       x.className = "";
     }
 
-    function showSnackBar2() {
-      var x = document.getElementById("snackbar2");
+    function showVidSnackbar() {
+    update_size();
+      var x = document.getElementById("vid_control_snackbar");
       x.className = "show";
-      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
     }
 
     function update_size(){
         $("#snackbar").width($("#vid1").width()/4+20);
         $("#snackbar").height(20);
+        $("#vid_control_snackbar").height(20);
+        var top_pos = $("#vid1").height()-10
+
         var left_pos = window.innerWidth/2+$("#vid1").width()/2-$("#snackbar").width()-50; 
+        var left_pos2 = window.innerWidth/2-$("#vid_control_snackbar").width()/2; 
+
         // console.log(left_pos);
-        $("#snackbar").css({top: $("#vid1").height()-20, left:left_pos , position:'absolute'});
+        $("#snackbar").css({top: top_pos, left:left_pos , position:'absolute'});
+        $("#vid_control_snackbar").css({top: top_pos, left:left_pos2 , position:'absolute'});
 
         // var thumbnails = $("#snackbar").find("img");
         // for(i=0;i<thumbnails.length;i++){

@@ -17,8 +17,8 @@ var vid_1_pause_array = [6.07, 27.24, 32.01, 38.18, 44.4, 52.76, 67.73, 71.56, 7
 var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
 
 // properties of vid 2
-var vid_2_pause_array = [14.61, 17.37, 28.87, 35.9, 44.47, 48.76, 52.09, 60.77, 63.29, 69.15, 82.04, 85.22, 104.4, 119.69, 125.55, 131.26, 147.12];
-var vid_2_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
+var vid_2_pause_array = [14.08, 16.92, 28.42, 35.44, 44.02, 48.31, 51.63, 58.12, 60.32, 62.84, 68.7, 78.46, 81.59, 84.77, 94.01, 103.94, 107.51, 119.24, 125.1, 130.8, 133.11, 146.98];
+var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
 
 var vid_3_pause_array = [13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94];
 var vid_3_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
@@ -44,7 +44,7 @@ var time_per_frame =0;
 // console.log(time_per_frame)
 
 var video = document.getElementById('vid1');
-video.controls = false; 
+video.controls = true; 
 var pause_dur = 1000;
 var pause_on = true; 
 // listen on the event
@@ -154,8 +154,8 @@ function isIn(number,array){
     // return true if the current time is within 0.2 of the set value
     var range = 0.5
     var offset = 0.4
-    for (i = 0; i < array.length; i++) {
-        if (number>array[i]-offset && number<=array[i]+0.1){
+    for (i = 0; i < array.length; i++) {        
+        if (number>array[i]-offset-0.2 && number<=array[i]+0.1-0.2){
             pause_index = i;
             old_f_num = number;
             count = i; 
@@ -225,13 +225,16 @@ function rewind(){
     c_time = video.currentTime;
 
     c_time_1 = getNextRewindTime(c_time,pause_array);
-    c_time_2 = c_time - 5
+    c_time_2 = c_time - 3
 
     pause_on = false; 
     video.currentTime = Math.max(c_time_1,c_time_2); 
 
     // console.log(count);
     console.log("Rewinded to t = " +Math.max(c_time_1,c_time_2)+ " sec");
+    $("#vid_status").text("Rewind by 2 seconds"); 
+
+    showVidSnackbar(); 
     // console.log("Rewind by 2 secs");
 
     // video.play();
@@ -246,6 +249,10 @@ function forward(){
         video.currentTime = c_time;
     }
     console.log("Forward by 2 secs");
+    $("#vid_status").text("Forward by 2 seconds"); 
+
+    showVidSnackbar(); 
+
 }
 
 
