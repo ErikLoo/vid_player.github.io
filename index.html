@@ -315,6 +315,8 @@
         //set up the checkbox listener once the web page starts loading
         // setupCheckbox($(".T1_Box").eq(0), $(".T1_Slider").eq(0),0);//set up checkbox again after creating new elements
         setupCheckbox();
+        $(".vid_control").hide();
+
         $("#instruct_1").show();
         $("#instruct_2").hide();
         $("#instruct_3").hide();
@@ -380,6 +382,7 @@
                 // alert(vid_src);
                 video.src = vid_src;
                 video.load();
+                $(".vid_control").hide();
                 setupCheckbox();
 
             }
@@ -444,6 +447,7 @@
             video.playbackRate = 0.50}
 
         $('.Setting').hide();
+        $(".vid_control").show();
 
     }
 
