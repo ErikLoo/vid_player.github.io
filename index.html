@@ -13,6 +13,8 @@
     <!-- <link rel="stylesheet" href="CSS Files/snackbar.css"> -->
     <link rel="stylesheet" href="CSS Files/new_snack_bar.css">
     <link rel="stylesheet" href="CSS Files/snackbar.css">
+    <link rel="stylesheet" href="CSS Files/vid_slider.css">
+
 
 
 
@@ -32,7 +34,9 @@
         /* #snackbar img{
             border-style: solid;
             border-color: green;
-        } */bow
+        } */
+        
+        bow
 
         section {
             display: flex;
@@ -72,6 +76,22 @@
             margin-right: auto;
         }
 
+        .vid_play_time{
+          display: flex;
+          width: 150px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          font-size: 20px;
+
+          /* text-align: center; */
+        }
+
+        .vid_play_time>div{
+            /* display: inline-block;  */
+            width: 100%; 
+        }
+
         p{
             font-size: 20px;
         }
@@ -90,6 +110,24 @@
             cursor:pointer;
             background-color: Transparent;
             border: none;
+        }
+
+        .part_id_text>div{
+            display: inline-block;
+        display: -moz-inline-box;
+        *display: inline; /* For IE7 */
+        zoom: 1; /* Trigger hasLayout */
+        width: 32%;
+        text-align: center;
+        }
+
+        .part_id_box>div{
+            display: inline-block;
+        display: -moz-inline-box;
+        *display: inline; /* For IE7 */
+        zoom: 1; /* Trigger hasLayout */
+        width: 32%;
+        text-align: center;
         }
 
         .check_boxes_text > div {
@@ -133,116 +171,16 @@
 </head>
 
 <body  onresize="update_size()">
-    <div id="title">
+    <!-- <div id="title">
         <p><b id = "task_id">Task 1: Sending Zoom Invite by E-mail</b></p>
         
-    </div>
+    </div> -->
 
-    <section id="videos">
-
-        <div id="left">
-            <video id="vid1" width="100%" controls>
-
-                <source src="videos/sending_zoom_invite_Trim_Trim.mp4">
-
-            </video>
-
-            <!-- <div id="snackbar">
-                <div class = "img_first_row">
-                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                </div>
-        
-                <div class = "img_second_row">
-                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                </div>
-            </div> -->
-
-            <div id="snackbar"><p id="time_left" style="display: inline;">X</p></div>
-            <div id="vid_control_snackbar"><p id="vid_status" style="display: inline;">X</p></div>
-
-
-        </div>
-
-        <!-- <div id="right">
-            <video id="vid2" width="400px" controls>
-
-                <source src="videos/Tea making soundless.mp4">
-
-            </video>
-
-        </div> -->
-
-    </section>
-
-    <!-- <div id="snackbar">Some text some message..</div> -->
-    <div class = "vid_control">
-        <div><button onclick="rewind()">
-            ⏪
-        </button></div>
-        <div><button onclick="pause()">
-            ⏸️ 
-        </button></div>
-        <div><button onclick="play()">
-            ▶️
-        </button></div>
-        <div><button onclick="forward()">
-            ⏩
-        </button></div>
-
-    </div>
-
-    <section class="Setting">
-
-        <p class="tasks" style="margin-left: 0px;"><b>Video Playback Speed
-        </b></p>
-    
-    <div class = "check_boxes_text">
-
-            <div><b>0.5x</b></div>
-            <div><b>0.75x</b></div>
-            <div><b>1x</b></div>
-            
-    </div>
-
-    <div class = "check_boxes">
-
-        <div><input type="checkbox" class="v_50"></div>
-        <div><input type="checkbox" class="v_75"></div>
-        <div><input type="checkbox" class="v_100"></div>
-        
-    </div>
-
-
-    <p class="tasks" style="margin-left: 0px;"><b>Video Pause
-    </b></p>
-
-    <div class = "pause_boxes_text">
-        <div><b>ON</b></div>
-        <div><b>OFF</b></div>                
-    </div>
-
-    <div class = "pause_boxes">
-
-        <div><input type="checkbox" class="pause_on"></div>
-        <div><input type="checkbox" class="pause_off"></div>            
-    </div>
-    
-    <button class= "confirm_but" onclick="reload_and_hide()">
-        Confirm & Reload
-    </button>
-
-    </section>
-    <!-- <p class="task_instruct" style="margin-left:10px;"><b>Task Instructions
-    </b></p> -->
     <div class="tab-panels">
         <ul class="tabs">
-            <li rel="panel1" vid = "videos/sending_zoom_invite_Trim_Trim.mp4" task = "Task 1: Sending Zoom Invite" class="active1" Name="gtab">Task 1</li>
-            <li rel="panel2" vid = "videos/create email rule_Trim_Trim.mp4" task = "Task 2: Creating E-mail Rules" Name="btab">Task 2</li>
-            <li rel="panel3" vid = "videos/create youtube playlist_Trim_Trim.mp4" task = "Task 3: Creating YouTube Playlists" Name="btab">Task 3</li>
+            <li rel="panel1" vid = "videos/sending_zoom_invite_Trim_Trim.mp4" task = "Task 1: Sending Zoom Invite" class="active1" Name="gtab">Task 1: Sending Zoom Invite</li>
+            <li rel="panel2" vid = "videos/create email rule_Trim_Trim.mp4" task = "Task 2: Creating E-mail Rules" Name="btab">Task 2: Creating E-mail Rules</li>
+            <li rel="panel3" vid = "videos/create youtube playlist_Trim_Trim.mp4" task = "Task 3: Creating YouTube Playlists" Name="btab">Task 3: Creating Youtube Playlists</li>
             <button onclick="hide_setting()" style="float: right;
             margin-right: 30px;
             font-size: 20px;
@@ -300,6 +238,142 @@
 
 
     </div>
+
+    <section class="Setting">
+        <p><b>Select a Participant ID</b></p>
+
+        <div class = "part_id_text">
+
+            <div><b>P1</b></div>
+            <div><b>P2</b></div>
+            <div><b>P3</b></div>      
+            <!-- <div><b>P4</b></div>
+            <div><b>P5</b></div> -->
+            
+        </div>
+
+        <div class = "part_id_box">
+
+            <div><input type="checkbox" class="P1"></div>
+            <div><input type="checkbox" class="P2"></div>
+            <div><input type="checkbox" class="P3"></div>
+            <!-- <div><input type="checkbox" class="P4"></div>
+            <div><input type="checkbox" class="P5"></div> -->
+            
+        </div>
+
+        <p class="tasks" style="margin-left: 0px;"><b>Video Playback Speed
+        </b></p>
+    
+    <div class = "check_boxes_text">
+
+            <div><b>0.5x</b></div>
+            <div><b>0.75x</b></div>
+            <div><b>1x</b></div>
+            
+    </div>
+
+    <div class = "check_boxes">
+
+        <div><input type="checkbox" class="v_50"></div>
+        <div><input type="checkbox" class="v_75"></div>
+        <div><input type="checkbox" class="v_100"></div>
+        
+    </div>
+
+
+    <p class="tasks" style="margin-left: 0px;"><b>Video Pause
+    </b></p>
+
+    <div class = "pause_boxes_text">
+        <div><b>ON</b></div>
+        <div><b>OFF</b></div>                
+    </div>
+
+    <div class = "pause_boxes">
+
+        <div><input type="checkbox" class="pause_on"></div>
+        <div><input type="checkbox" class="pause_off"></div>            
+    </div>
+    
+    <button class= "confirm_but" onclick="reload_and_hide()">
+        Confirm & Reload
+    </button>
+
+
+    </section>
+
+    <section id="videos">
+
+        <div id="left">
+            <video id="vid1" width="100%" controls>
+
+                <source src="videos/sending_zoom_invite_Trim_Trim.mp4">
+
+            </video>
+
+            <!-- <div id="snackbar">
+                <div class = "img_first_row">
+                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+                </div>
+        
+                <div class = "img_second_row">
+                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                </div>
+            </div> -->
+
+            <div id="snackbar"><p id="time_left" style="display: inline;">X</p></div>
+            <div id="vid_control_snackbar"><p id="vid_status" style="display: inline;">X</p></div>
+
+
+        </div>
+
+        <!-- <div id="right">
+            <video id="vid2" width="400px" controls>
+
+                <source src="videos/Tea making soundless.mp4">
+
+            </video>
+
+        </div> -->
+
+    </section>
+
+    <div class="slidecontainer">
+        <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
+      </div>
+
+    <div class = "vid_play_time">
+          <div class = "vid_current_time">00:00</div>/<div class = "vid_total_length">00:00</div>
+    </div>
+
+
+    <!-- <div id="snackbar">Some text some message..</div> -->
+    <div class = "vid_control">
+        <div><button onclick="rewind()">
+            ⏪
+        </button></div>
+        <div><button onclick="pause()">
+            ⏸️ 
+        </button></div>
+        <div><button onclick="play()">
+            ▶️
+        </button></div>
+        <div><button onclick="forward()">
+            ⏩
+        </button></div>
+
+    </div>
+    
+
+
+    <!-- <p class="task_instruct" style="margin-left:10px;"><b>Task Instructions
+    </b></p> -->
+  
 
     <!-- <div id="snackbar2">Resume playing...</div> -->
  
@@ -370,7 +444,7 @@
             showNextVid();
             //show next panel
             function showNextVid() {
-                $('.Setting').show();
+                // $('.Setting').show();
 
                 $(this).removeClass('active');
 
@@ -379,7 +453,7 @@
                     $(this).addClass('active');
                 });
                 
-                $("#task_id").text(task_txt);
+                // $("#task_id").text(task_txt);
                 // reload the video
                 video = document.getElementById('vid1');
                 // alert(vid_src);

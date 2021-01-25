@@ -102,9 +102,56 @@ var pausing_function = function(){
     pause_on = true; 
 
 };
+
+var update_slider = function(){
+    var slider_val = video.currentTime/video.duration*1000;
+    // console.log("slider val: " + slider_val);
+    if (!isNaN(slider_val)){
+        $(".slider").prop("value",slider_val);
+    }else{
+        console.log("NaN found");
+        $(".slider").prop("value",0);
+
+    }
+};
+
+var update_play_time = function(){
+    // console.log(video.currentTime)
+    if (!isNaN(video.currentTime)){
+        $(".vid_current_time").text(convert_to_mins(video.currentTime));
+    }else{
+        $(".vid_current_time").text("0:00");
+
+    }
+
+    if (!isNaN(video.duration)){
+        $(".vid_total_length").text(convert_to_mins(video.duration));
+    }else{
+        $(".vid_total_length").text("0:00");
+
+    }
+}
+
 // call pausing fucntion when the timeupdate event has taken place
 video.addEventListener("timeupdate", pausing_function);
+video.addEventListener("timeupdate", update_slider);
+video.addEventListener("timeupdate", update_play_time);
+
+
+
 listenerAttached = true;
+
+function convert_to_mins(vid_time){
+    var minutes_str = (vid_time/60|0).toString();
+    var seconds = vid_time%60|0
+    var seconds_str = seconds.toString();
+
+    if (seconds<10){
+        seconds_str = "0" + seconds_str;
+    }
+
+    return minutes_str+":"+seconds_str;
+}
 
 function pause_control(enable_pause){
     if (enable_pause==false){
