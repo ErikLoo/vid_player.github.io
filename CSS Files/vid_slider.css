@@ -8,25 +8,26 @@
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
-  margin-top:15px;
+  margin-top:0px;
   margin-left:auto;
   margin-right:auto;
   display: flex;
 }
 
 .slider::-webkit-slider-thumb {
+  /* Note you have to make sure the slider thumb has the same size as the pause indicator tick!!! */
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 21.9792px;
+  height: 21.9792px;
   border-radius: 50%; 
   background: rgb(0, 124, 225);
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 21.9792px;
+  height: 21.9792px;
   border-radius: 50%;
   background: rgb(0, 124, 225);
   cursor: pointer;

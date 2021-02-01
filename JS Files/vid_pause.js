@@ -13,6 +13,9 @@ var time_passed = 0;
 var listenerAttached = true; 
 
 var vid_1_pause_array = [6.07, 27.24, 32.01, 38.18, 44.4, 52.76, 67.73, 71.56, 75.93, 78.91, 84.55, 89.21, 107.85];
+// var vid_1_pause_array = [118.869042];
+// var vid_1_pause_array = [0,6.07,107.85,118.869042];
+
 // var vid_1_duration_array = [4.1, 2.01, 3.51, 4.01, 4.8, 6.0, 5.95, 1.85, 3.7, 1.41, 4.95, 2.15, 5.44];
 var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
 
@@ -115,7 +118,7 @@ var update_slider = function(){
     }
 };
 
-var update_play_time = function(){
+var update_slider_time = function(){
     // console.log(video.currentTime)
     if (!isNaN(video.currentTime)){
         $(".vid_current_time").text(convert_to_mins(video.currentTime));
@@ -130,12 +133,14 @@ var update_play_time = function(){
         $(".vid_total_length").text("0:00");
 
     }
-}
+};
+
+
 
 // call pausing fucntion when the timeupdate event has taken place
 video.addEventListener("timeupdate", pausing_function);
 video.addEventListener("timeupdate", update_slider);
-video.addEventListener("timeupdate", update_play_time);
+video.addEventListener("timeupdate", update_slider_time);
 
 
 
@@ -272,14 +277,14 @@ function rewind(){
     c_time = video.currentTime;
 
     c_time_1 = getNextRewindTime(c_time,pause_array);
-    c_time_2 = c_time - 3
+    c_time_2 = c_time - 5
 
     pause_on = false; 
     video.currentTime = Math.max(c_time_1,c_time_2); 
 
     // console.log(count);
     console.log("Rewinded to t = " +Math.max(c_time_1,c_time_2)+ " sec");
-    $("#vid_status").text("Rewind by 2 seconds"); 
+    $("#vid_status").text("Rewind by 5 seconds"); 
 
     showVidSnackbar(); 
     // console.log("Rewind by 2 secs");
@@ -291,12 +296,12 @@ function rewind(){
 function forward(){
     video = document.getElementById('vid1');
     c_time = video.currentTime;
-    c_time = c_time + 2;
+    c_time = c_time + 5;
     if (c_time!=0){
         video.currentTime = c_time;
     }
-    console.log("Forward by 2 secs");
-    $("#vid_status").text("Forward by 2 seconds"); 
+    console.log("Forward by 5 secs");
+    $("#vid_status").text("Forward by 5 seconds"); 
 
     showVidSnackbar(); 
 
