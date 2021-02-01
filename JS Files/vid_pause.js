@@ -107,8 +107,19 @@ var pausing_function = function(){
 };
 
 var update_slider = function(){
+
+    // check_video_ready = setInterval(function () {   
+
+    //     if (video.readyState > 0) {
+    //         var slider_val = video.currentTime/video.duration*1000;
+    //         $(".slider").prop("value",slider_val);
+   
+    //         clearInterval(check_video_ready);
+    //     }
+
+    // }, 100);
+
     var slider_val = video.currentTime/video.duration*1000;
-    // console.log("slider val: " + slider_val);
     if (!isNaN(slider_val)){
         $(".slider").prop("value",slider_val);
     }else{

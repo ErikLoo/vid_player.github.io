@@ -501,15 +501,95 @@
                 video.load();
                 $(".vid_control").hide();
                 setupCheckbox();
-                add_markers_to_slider();
-
+                wait_to_load_video();
             }
         });
     });
 </script>
 
 <script>
+
+    // add_markers_to_slider();
+    $(".slidercontainer").hide();
+    wait_to_load_video();
+    var video_loaded = false; 
+
+    function wait_to_load_video() {
+        // run a separate thread to check if video is ready
+        // counter++; 
+        check_video_ready= setInterval(function () {
+            video = document.getElementById('vid1');
+            if (video.readyState > 0) {
+                $(".slidercontainer").show();
+               add_ticks();
+               console.log("video loaded");
+               video_loaded = true; 
+            }else{
+                console.log("trying to load video");
+            video_loaded = false; 
+
+            }
+        }, 500);
+
+    
+
+    }
+
+    function add_ticks(){
+         //clear the entire div
+                 console.log("add ticks");
+                $(".ticks").width($(".slider").width()-21.9792);
+                // video = document.getElementById('vid1');
+                $(".ticks").empty();
+                // var top_pos = $(".slider").height()
+                // var left_pos = window.innerWidth/2+$("#vid1").width()/2-$("#snackbar").width()-50; 
+                video = document.getElementById('vid1');
+
+                var tick_array = pause_array;
+                var vid_duration = video.duration;
+
+                var marker = "";
+                
+                // generatae first
+                for (i = 0; i < tick_array.length; i++) {
+                    marker_id = 'tick_' + i;
+                    var marker = "<div id=" + marker_id + ">🔻</div>";
+                    $(".ticks").append(marker);
+                    // $("#" + marker_id).css({ top: 0, left: -21.9792/2, position: 'relative' });
+
+                } 
+                
+                // re-position the ticks later
+                for (i = 0; i < tick_array.length; i++) {
+                    marker_id = 'tick_' + i;
+                    // var marker = "<div id=" + marker_id + ">🔻</div>";
+                    var left_pos = (tick_array[i]-0.3) / vid_duration* $(".ticks").width();
+                    var universal_offset = -21.9792/2; 
+                    var indiv_offset = -i*$("#" + marker_id).width();
+                    var total_offset = universal_offset + indiv_offset
+                    // $(".ticks").append(marker);
+                    $("#" + marker_id).css({ top: 0, left:left_pos+total_offset, position: 'relative' });
+                } 
+                
+                clearInterval(check_video_ready);
+                // delete check_video_ready;
+                // print(typeof status);
+                // console.log(status);
+                // console.log("Remove timer " + counter);
+                // console.log(check_video_ready)
+                // console.log(check_video_ready==null);
+
+                // console.log("check videor ready timer removed!!!")
+            }
+
+</script>
+
+<script>
+    
+    var old_pos = 0;
+
     update_size();
+
     function showSnackBar() {
         update_size();
         var x = document.getElementById("snackbar");
@@ -543,11 +623,12 @@
         $("#snackbar").css({ top: top_pos, left: left_pos, position: 'absolute' });
         $("#vid_control_snackbar").css({ top: top_pos, left: left_pos2, position: 'absolute' });
 
-        add_markers_to_slider();
-        // var thumbnails = $("#snackbar").find("img");
-        // for(i=0;i<thumbnails.length;i++){
-        // // thumbnails.eq(i).css("max-width", $("#videos").width()*(1/2)+"px")
-        // thumbnails.eq(i).width($("#left").width()*(1/3.2));}
+        console.log("call to add ticks");
+
+        if (video_loaded){
+            add_ticks();
+        }
+        // add_ticks();
     }
 
     function hide_setting() {
@@ -557,6 +638,8 @@
         } else {
             $('.Setting').show();
         }
+                // add_markers_to_slider();
+
     }
 
     function reload_and_hide() {
@@ -573,6 +656,7 @@
         }
 
         $('.Setting').hide();
+        wait_to_load_video();
         $(".vid_control").show();
         // add_markers_to_slider();
 
@@ -580,6 +664,8 @@
 
     // slider drag and drop
     var drag_and_drop = function () {
+        // add_markers_to_slider();
+
         console.log("dragging on the slider")
         video = document.getElementById('vid1');
         var play_video_later = false;
@@ -619,62 +705,11 @@
     };
     $(".slider").on('mousedown', drag_and_drop);
 
-</script>
-
-<script>
-
-    // add_markers_to_slider();
-    add_markers_to_slider();
-
-    function add_markers_to_slider() {
-
-        // run a separate thread to check if video is ready
-        check_video_ready = setInterval(function () {
-            video = document.getElementById('vid1');
-            if (video.readyState > 0) {
-                //clear the entire div
-                console.log("Load ticks");
-                $(".ticks").width($(".slider").width()-21.9792);
-                // video = document.getElementById('vid1');
-                $(".ticks").empty();
-                // var top_pos = $(".slider").height()
-                // var left_pos = window.innerWidth/2+$("#vid1").width()/2-$("#snackbar").width()-50; 
-                video = document.getElementById('vid1');
-
-                var tick_array = pause_array;
-                var vid_duration = video.duration;
-
-                var marker = "";
-                
-                // generatae first
-                for (i = 0; i < tick_array.length; i++) {
-                    marker_id = 'tick_' + i;
-                    var marker = "<div id=" + marker_id + ">🔻</div>";
-                    $(".ticks").append(marker);
-                    // $("#" + marker_id).css({ top: 0, left: -21.9792/2, position: 'relative' });
-
-                } 
-                
-                // re-position the ticks later
-                for (i = 0; i < tick_array.length; i++) {
-                    marker_id = 'tick_' + i;
-                    // var marker = "<div id=" + marker_id + ">🔻</div>";
-                    var left_pos = (tick_array[i]-0.3) / vid_duration* $(".ticks").width();
-                    var universal_offset = -21.9792/2; 
-                    var indiv_offset = -i*$("#" + marker_id).width();
-                    var total_offset = universal_offset + indiv_offset
-                    // $(".ticks").append(marker);
-                    $("#" + marker_id).css({ top: 0, left:left_pos+total_offset, position: 'relative' });
-                } 
-                
-                clearInterval(check_video_ready);
-            }
-        }, 100);
-
-
-    }
+    
 
 </script>
+
+
 <!-- <script src="JS Files/second_slider_operations.js"></script> -->
 <!-- <script src="JS Files/main.js"></script> -->
 
