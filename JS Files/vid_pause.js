@@ -340,7 +340,7 @@ function play(){
     if (during_puase){
         clearTimeout(myTimer);
         clearInterval(myCountUpTimer);
-        duration_array[count] = time_passed; 
+        // duration_array[count] = time_passed; 
         console.log(time_passed + " s has passed");
         console.log("pause duration updated");
         during_puase = false; 
