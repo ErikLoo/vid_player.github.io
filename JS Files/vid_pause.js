@@ -14,7 +14,7 @@ var listenerAttached = true;
 
 
 
-var vid_1_pause_array = [6.07, 27.24, 32.01, 38.18, 44.4, 52.76, 67.73, 71.56, 75.93, 78.91, 84.55, 89.21, 107.85];
+var vid_1_pause_array = remove_redundant_pause([6.07, 27.24, 32.01, 38.18, 44.4, 52.76, 67.73, 71.56, 75.93, 78.91, 84.55, 89.21, 107.85]);
 // var vid_1_pause_array = [118.869042];
 // var vid_1_pause_array = [0,6.07,107.85,118.869042];
 
@@ -23,11 +23,11 @@ var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 30
 vid_1_speed = 154.85;
 
 // properties of vid 2
-var vid_2_pause_array = [14.08, 16.92, 28.42, 35.44, 44.02, 48.31, 51.63, 58.12, 60.32, 62.84, 68.7, 78.46, 81.59, 84.77, 94.01, 103.94, 107.51, 119.24, 125.1, 130.8, 133.11, 146.98];
+var vid_2_pause_array = remove_redundant_pause([14.08, 16.92, 28.42, 35.44, 44.02, 48.31, 51.63, 58.12, 60.32, 62.84, 68.7, 78.46, 81.59, 84.77, 94.01, 103.94, 107.51, 119.24, 125.1, 130.8, 133.11, 146.98]);
 var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
 vid_2_speed = 178.29;
 
-var vid_3_pause_array = [13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94];
+var vid_3_pause_array = remove_redundant_pause([13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94]);
 var vid_3_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
 vid_3_speed = 165.62;
 
@@ -83,7 +83,8 @@ var pausing_function = function(){
             }
             // pause the video proprotionally to the gap length
             // pause_dur = addition_t*(end_time-start_time)/total_dur*1000;
-            pause_dur = duration_array[count]*1000
+            // pause_dur = duration_array[count]*1000
+            pause_dur = 300*1000
             // frame_array = generate_frame_array(start_time,end_time,n_frames);
             console.log("System pause at: " + video.currentTime + " for " + pause_dur/1000 + " seconds.");
             // remove the event listener after you paused the playback
@@ -392,3 +393,18 @@ function pause(){
     clearTimeout(myTimer);
     
 }    
+
+function remove_redundant_pause(old_array){
+    var new_array= [];
+    old_t = old_array[0];
+    new_array.push(old_t);
+    for (i=0;i<old_array.length;i++){
+        //enforce that the min duration between pauses must be 5 secs or more
+        if(old_array[i]-new_array[new_array.length-1]>=5){
+            new_array.push(old_array[i]);
+        }
+        old_t = old_array[i];
+    }
+
+    return new_array; 
+}

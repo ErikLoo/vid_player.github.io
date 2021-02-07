@@ -25,6 +25,8 @@ $(".part_id_box div input").on("click",function(){
                 $(this).prop("checked",false);
             }
         });
+
+        $(".confirm_but").prop("disabled",false);
 });
 
 
