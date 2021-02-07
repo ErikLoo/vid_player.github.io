@@ -68,6 +68,8 @@ var pausing_function = function(){
     {
         if (video.paused!=true && pause_on==true){
             video.pause();
+            // blur the video
+            blur_video();
             during_puase = true; 
             start_the_timer();
             vid_dur = video.duration;
@@ -101,6 +103,7 @@ var pausing_function = function(){
                     // video.currentTime = video.currentTime;
                     console.log("System resume playing after pausing for " + pause_dur/1000 + "secs");
                     video.play();
+                    unblur_video();
                     during_puase = false; 
                     clearInterval(myCountUpTimer);
                 }else{
@@ -314,6 +317,7 @@ function rewind(){
     $("#vid_status").text("Rewind by 5 seconds"); 
 
     showVidSnackbar(); 
+    unblur_video(); 
     // console.log("Rewind by 2 secs");
 
     // video.play();
@@ -331,6 +335,7 @@ function forward(){
     $("#vid_status").text("Forward by 5 seconds"); 
 
     showVidSnackbar(); 
+    unblur_video();
 
 }
 
@@ -357,12 +362,12 @@ function play(){
         clearTimeout(myTimer);
         clearInterval(myCountUpTimer);
         // duration_array[count] = time_passed; 
-        console.log(time_passed + " s has passed");
-        console.log("pause duration updated");
+        // console.log(time_passed + " s has passed");
+        // console.log("pause duration updated");
         during_puase = false; 
     }
     console.log('Resume playing');
-     
+    unblur_video();
     video.play ();
 }
 
@@ -407,4 +412,12 @@ function remove_redundant_pause(old_array){
     }
 
     return new_array; 
+}
+
+function blur_video(){
+    $("#vid1").css({" -webkit-filter": "blur(30px)","filter": "blur(30px)"});
+}
+
+function unblur_video(){
+    $("#vid1").css({" -webkit-filter": "blur(0px)","filter": "blur(0px)"});
 }
