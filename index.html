@@ -14,10 +14,7 @@
     <link rel="stylesheet" href="CSS Files/new_snack_bar.css">
     <link rel="stylesheet" href="CSS Files/snackbar.css">
     <link rel="stylesheet" href="CSS Files/vid_slider.css">
-
-
-
-
+    
     <style type="text/css">
         body {
             max-width: 2000px;
@@ -151,7 +148,7 @@
             /* For IE7 */
             zoom: 1;
             /* Trigger hasLayout */
-            width: 32%;
+            width: 49%;
             text-align: center;
         }
 
@@ -162,7 +159,7 @@
             /* For IE7 */
             zoom: 1;
             /* Trigger hasLayout */
-            width: 32%;
+            width: 49%;
             text-align: center;
         }
 
@@ -294,22 +291,22 @@
 
         </div>
 
-        <p class="tasks" style="margin-left: 0px;"><b>Video Playback Speed
+        <p class="tasks" style="margin-left: 0px;"><b>Video Playback Speed (adjusted to 120 wpm)
             </b></p>
 
         <div class="check_boxes_text">
 
-            <div><b>0.5x</b></div>
-            <div><b>0.75x</b></div>
-            <div><b>1x</b></div>
+            <div><b>ON</b></div>
+            <!-- <div><b>0.75x</b></div> -->
+            <div><b>OFF</b></div>
 
         </div>
 
-        <div class="check_boxes">
+        <div class="check_boxes" style="pointer-events: none;">
 
-            <div><input type="checkbox" class="v_50"></div>
-            <div><input type="checkbox" class="v_75"></div>
-            <div><input type="checkbox" class="v_100"></div>
+            <div><input type="checkbox" class="v_on" ></div>
+            <!-- <div><input type="checkbox" class="v_75"></div> -->
+            <div><input type="checkbox" class="v_off" ></div>
 
         </div>
 
@@ -322,14 +319,13 @@
             <div><b>OFF</b></div>
         </div>
 
-        <div class="pause_boxes">
-
-            <div><input type="checkbox" class="pause_on"></div>
-            <div><input type="checkbox" class="pause_off"></div>
+        <div class="pause_boxes" style="pointer-events: none;">
+            <div><input type="checkbox" class="pause_on" ></div>
+            <div><input type="checkbox" class="pause_off" ></div>
         </div>
 
         <button class="confirm_but" onclick="reload_and_hide()">
-            Confirm & Reload
+            Confirm conditions
         </button>
 
 
@@ -424,14 +420,17 @@
 
 <script src="bower/bower_components/jquery/dist/jquery.js"></script>
 <script src="JS Files/vid_pause.js"></script>
-<script src="JS Files/checkbox.js"></script>
+<!-- <script src="JS Files/checkbox.js"></script> -->
 <!-- <script src="JS Files/vid_pause.js"></script> -->
 <script>
+    var current_video = "vid_1";
+    var part_id = "P1";
+
     $(function () {
 
         //set up the checkbox listener once the web page starts loading
         // setupCheckbox($(".T1_Box").eq(0), $(".T1_Slider").eq(0),0);//set up checkbox again after creating new elements
-        setupCheckbox();
+        // setupCheckbox();
         $(".vid_control").hide();
 
         $("#instruct_1").show();
@@ -447,16 +446,25 @@
             if ($(this).attr("rel") == "panel1") {
                 pause_array = vid_1_pause_array;
                 duration_array = vid_1_duration_array;
+                current_video = "vid_1";
+                $("#vid1").attr("vid_speed",vid_1_speed);
                 $(this).addClass('active1');
             }
             else if (($(this).attr("rel") == "panel2")) {
                 pause_array = vid_2_pause_array;
                 duration_array = vid_2_duration_array;
+                current_video = "vid_2";
+
+                $("#vid1").attr("vid_speed",vid_2_speed);
+
                 $(this).addClass('active2');
             }
             else {
                 pause_array = vid_3_pause_array;
                 duration_array = vid_3_duration_array;
+                current_video = "vid_3";
+
+                $("#vid1").attr("vid_speed",vid_3_speed);
                 $(this).addClass('active3');
             }
 
@@ -482,6 +490,9 @@
             }
 
             showNextVid();
+
+            set_condition(part_id,current_video);
+
             //show next panel
             function showNextVid() {
                 // $('.Setting').show();
@@ -500,7 +511,7 @@
                 video.src = vid_src;
                 video.load();
                 $(".vid_control").hide();
-                setupCheckbox();
+                // setupCheckbox();
                 wait_to_load_video();
             }
         });
@@ -645,15 +656,15 @@
     function reload_and_hide() {
         video = document.getElementById('vid1');
         // alert(vid_src);
-        video.load();
+        // video.load();
 
-        if ($(".v_100").prop("checked")) { video.playbackRate = 1.0 }
-        if ($(".v_75").prop("checked")) {
-            video.playbackRate = 0.75
-        }
-        if ($(".v_50").prop("checked")) {
-            video.playbackRate = 0.50
-        }
+        // if ($(".v_100").prop("checked")) { video.playbackRate = 1.0 }
+        // if ($(".v_75").prop("checked")) {
+        //     video.playbackRate = 0.75
+        // }
+        // if ($(".v_50").prop("checked")) {
+        //     video.playbackRate = 0.50
+        // }
 
         $('.Setting').hide();
         wait_to_load_video();
@@ -709,7 +720,7 @@
 
 </script>
 
-
+<script src="JS Files/select_participant.js"></script>
 <!-- <script src="JS Files/second_slider_operations.js"></script> -->
 <!-- <script src="JS Files/main.js"></script> -->
 

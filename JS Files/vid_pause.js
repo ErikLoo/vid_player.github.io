@@ -12,22 +12,30 @@ var myCountUpTimer;
 var time_passed = 0;
 var listenerAttached = true; 
 
+
+
 var vid_1_pause_array = [6.07, 27.24, 32.01, 38.18, 44.4, 52.76, 67.73, 71.56, 75.93, 78.91, 84.55, 89.21, 107.85];
 // var vid_1_pause_array = [118.869042];
 // var vid_1_pause_array = [0,6.07,107.85,118.869042];
 
 // var vid_1_duration_array = [4.1, 2.01, 3.51, 4.01, 4.8, 6.0, 5.95, 1.85, 3.7, 1.41, 4.95, 2.15, 5.44];
 var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
+vid_1_speed = 154.85;
 
 // properties of vid 2
 var vid_2_pause_array = [14.08, 16.92, 28.42, 35.44, 44.02, 48.31, 51.63, 58.12, 60.32, 62.84, 68.7, 78.46, 81.59, 84.77, 94.01, 103.94, 107.51, 119.24, 125.1, 130.8, 133.11, 146.98];
 var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
+vid_2_speed = 178.29;
 
 var vid_3_pause_array = [13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94];
 var vid_3_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
+vid_3_speed = 165.62;
 
+// start with vid_1
 var pause_array = vid_1_pause_array;
 var duration_array = vid_1_duration_array;
+$("#vid1").attr("vid_speed",vid_1_speed);
+
 // // If pause <=1
 // var pause_array = [5.98, 11.46, 17.63, 24.05, 27.14, 31.92, 38.08, 44.3, 52.66, 60.99, 71.47, 78.81, 94.48, 107.75, 112.31, 115.93]
 
@@ -174,12 +182,17 @@ function pause_control(enable_pause){
         if (listenerAttached==true){
             video.removeEventListener('timeupdate', pausing_function);
             listenerAttached = false; 
+            // hide ticks
+            $(".ticks").hide();
             console.log("remove pause listener")
+
         }
     }else{
         if(listenerAttached==false){
             video.addEventListener("timeupdate", pausing_function);
             listenerAttached = true; 
+            //show ticks
+            $(".ticks").show();
             console.log("enable pause listener")
 
         }
@@ -192,7 +205,9 @@ function  start_the_timer(){
     myCountUpTimer = setInterval(function() {
         time_passed++; 
         if (intent_to_pause_during_thumb==false){
-            $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
+            // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
+            $("#time_left").text("Click play to continue"); 
+
         }
         showSnackBar();
         console.log("Time passed: " + time_passed + " s");
