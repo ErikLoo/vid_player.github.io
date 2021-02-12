@@ -637,14 +637,18 @@
         $("#snackbar").width($("#vid1").width() / 4 + 20);
         $("#snackbar").height(20);
         $("#vid_control_snackbar").height(20);
-        var top_pos = $("#vid1").height() - 10
+        $("#vid_control_snackbar").width($("#vid1").width() / 4 + 20);
+
+        // var top_pos = $("#vid1").height() - 10
+        var top_pos = -10;
+
 
         var left_pos = window.innerWidth / 2 + $("#vid1").width() / 2 - $("#snackbar").width() - 50;
         var left_pos2 = window.innerWidth / 2 - $("#vid_control_snackbar").width() / 2;
 
         // console.log(left_pos);
-        $("#snackbar").css({ top: top_pos, left: left_pos, position: 'absolute' });
-        $("#vid_control_snackbar").css({ top: top_pos, left: left_pos2, position: 'absolute' });
+        $("#snackbar").css({ top: top_pos+20+2*16, left: left_pos2, position: 'relative' });
+        $("#vid_control_snackbar").css({ top: top_pos, left: left_pos2, position: 'relative' });
 
         console.log("call to add ticks");
 

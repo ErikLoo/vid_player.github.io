@@ -334,7 +334,7 @@ function forward(){
     console.log("Forward by 5 secs");
     $("#vid_status").text("Forward by 5 seconds"); 
 
-    showVidSnackbar(); 
+    showVidSnackbar();  2
     unblur_video();
 
 }
