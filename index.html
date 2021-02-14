@@ -224,11 +224,10 @@
 
 
 
-            <div id="instruct_1" class=instructions> Sending a birthday invite to someone through the Google calendar.
-                Your birthday
-                is coming up next week, and you are planning to invite Bob to your birthday party through the Google
-                calendar. Your birthday
-                invite must contain the following:
+            <div id="instruct_1" class=instructions>
+                 Your friend, Erin Foster, will turn 37 on March 27. You and your friends won't be able to get together physically that day. 
+                You want to schedule a call at 3pm on that day you and your friends, Blair Carpenter and Leslie Moore, to celebrate Erin's brithday online.
+                Your birthday invite must contain the following components:
                 <ol>
                     <li>The name of the event (<u>xxx's birthday party</u>).</li>
                     <li>Date of the party (<u>x of November</u>) </li>
@@ -236,6 +235,10 @@
                     <li>Location of the party (<u>x street</u>)</li>
                 </ol>
                 Additionally, you are going to email him the invite, and his email address is <u>xxx@hotmail.com</u>.
+                
+                <div style="margin-top:8px;">
+                    Watch the following video to help you schedule a zoom meeting and invite people to join.
+                </div>
             </div>
 
             <div id="instruct_2" class=instructions>Creating a rule to move all the Amazon.ca emails to a designated
@@ -266,9 +269,6 @@
 
             <!-- <p class="tasks" style="margin-left: 0px;"><b>Video Controls
             </b></p> -->
-
-
-
 
         </div>
 
@@ -707,7 +707,8 @@
         // temporarily remove the slider listener
         video.removeEventListener("timeupdate", update_slider);
         // var mouseUp = false; 
-        // var mouseMove = false; 
+        // var mouseMove = false;
+
         $(".slider").on('mousemove', function () {
             // console.log("mousemove");
             vid_duration = video.duration;
@@ -721,6 +722,12 @@
         $(".slider").on('mouseup', function () {
 
             // add the update_slider function back on
+            console.log("Mouse up")
+            vid_duration = video.duration;
+            var drag_time = $(".slider").prop('value');
+            video.currentTime = drag_time / 1000 * vid_duration;
+
+
             video.addEventListener("timeupdate", update_slider);
             $(".slider").off("mousemove");
             $(".slider").off("mouseup");
