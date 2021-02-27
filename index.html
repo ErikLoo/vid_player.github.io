@@ -17,7 +17,7 @@
     
     <style type="text/css">
         body {
-            max-width: 2000px;
+            max-width: 1200px;
             background: white;
             margin-left: auto;
             margin-right: auto;
@@ -52,12 +52,23 @@
             
         }
 
-    
+        .task_status_but{
+            font-size: 35px;
+            border-radius: 10px;
+            border-width: 3px;
+            cursor: pointer;
+        }
+
+        .task_status_but:hover{
+            color: #fff;
+            background: #666;
+        }
 
         .confirm_but {
             display: flex;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 10px;
             padding: 5px;
             background-color: rgb(0, 124, 225);
             border-color: black;
@@ -73,7 +84,7 @@
         .instructions {
             margin-left: 30px;
             margin-top: 0px;
-            font-size: 20px;
+            font-size: 35px;
             text-align: justify;
             text-justify: inter-word;
             margin-left: auto;
@@ -204,11 +215,11 @@
     <div class="tab-panels">
         <ul class="tabs">
             <li rel="panel1" vid="videos/sending_zoom_invite_Trim_Trim.mp4" task="Task 1: Sending Zoom Invite"
-                class="active1" Name="gtab">Task 1: Sending Zoom Invite</li>
+                class="active1" Name="gtab">T-1:Zoom Invite</li>
             <li rel="panel2" vid="videos/create email rule_Trim_Trim.mp4" task="Task 2: Creating E-mail Rules"
-                Name="btab">Task 2: Creating E-mail Rules</li>
+                Name="btab">T-2:E-mail Rules</li>
             <li rel="panel3" vid="videos/create youtube playlist_Trim_Trim.mp4"
-                task="Task 3: Creating YouTube Playlists" Name="btab">Task 3: Creating Youtube Playlists</li>
+                task="Task 3: Creating YouTube Playlists" Name="btab">T-3:Youtube Playlists</li>
             <button onclick="hide_setting()" style="float: right;
             margin-right: 30px;
             font-size: 20px;
@@ -223,7 +234,6 @@
             <!-- add the content of task 1 -->
 
 
-
             <div id="instruct_1" class=instructions>
                  Your friend, Erin Foster, will turn 37 on <u>March 27</u>. You and your friends won't be able to get together physically that day due to the pandemic. 
                 You would like to schedule a one-time <u>two-hour</u> meeting, called "<u>Erin's birthday party</u>", at <u>3pm</u> on that day so that the 
@@ -232,6 +242,7 @@
                 <div style="margin-top:8px;">
                     Watch the following video to help you schedule a zoom meeting and invite people to join.
                 </div>
+
             </div>
 
             <div id="instruct_2" class=instructions>
@@ -257,7 +268,6 @@
 
             <!-- <p class="tasks" style="margin-left: 0px;"><b>Video Controls
             </b></p> -->
-
         </div>
 
 
@@ -323,79 +333,97 @@
             Confirm conditions
         </button>
 
+        
+        <p class="tasks" style="margin-left: 0px;"><b>Complete the study
+        </b></p>
+        
+        <button class="confirm_but" onclick="download_file()">
+            Download the data file
+        </button>
 
     </section>
+
+    <button class="task_status_but" id= "ready_but" onclick="start_task_timer()">
+        I am ready to watch the video!
+    </button>
+
+    <button class="task_status_but" id = "finish_but" onclick= "stop_task_timer()">
+        I have completed the task!
+    </button>
+
+    <button class="task_status_but" id = "survey_but">
+        Take a short survey!
+    </button>
 
     <section id="videos">
 
-        <div id="left">
-            <video id="vid1" width="100%" controls>
-
-                <source src="videos/sending_zoom_invite_Trim_Trim.mp4">
-
-            </video>
-
-            <!-- <div id="snackbar">
-                <div class = "img_first_row">
-                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                    <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+            <div id="left">
+                <video id="vid1" width="100%" controls>
+    
+                    <source src="videos/sending_zoom_invite_Trim_Trim.mp4">
+    
+                </video>
+    
+                <!-- <div id="snackbar">
+                    <div class = "img_first_row">
+                        <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+                        <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+                        <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
+                    </div>
+            
+                    <div class = "img_second_row">
+                        <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                        <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                        <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                    </div>
+                </div> -->
+    
+                <div id="snackbar">
+                    <p id="time_left" style="display: inline;">X</p>
                 </div>
-        
-                <div class = "img_second_row">
-                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                    <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
+                <div id="vid_control_snackbar">
+                    <p id="vid_status" style="display: inline;">X</p>
                 </div>
+    
+    
+            </div>
+    
+            <!-- <div id="right">
+                <video id="vid2" width="400px" controls>
+    
+                    <source src="videos/Tea making soundless.mp4">
+    
+                </video>
+    
             </div> -->
 
-            <div id="snackbar">
-                <p id="time_left" style="display: inline;">X</p>
-            </div>
-            <div id="vid_control_snackbar">
-                <p id="vid_status" style="display: inline;">X</p>
-            </div>
-
-
-        </div>
-
-        <!-- <div id="right">
-            <video id="vid2" width="400px" controls>
-
-                <source src="videos/Tea making soundless.mp4">
-
-            </video>
-
-        </div> -->
-
-    </section>
-
+        
     
-
-    <div class="slidercontainer">
-        <div class="ticks">
-
+        <div class="slidercontainer">
+            <div class="ticks">
+    
+            </div>
+            <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
         </div>
-        <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
-    </div>
-
-    <div class="vid_play_time">
-        <div class="vid_current_time">00:00</div>/<div class="vid_total_length">00:00</div>
-    </div>
+    
+        <div class="vid_play_time">
+            <div class="vid_current_time">00:00</div>/<div class="vid_total_length">00:00</div>
+        </div>
+    </section>
 
 
     <!-- <div id="snackbar">Some text some message..</div> -->
     <div class="vid_control">
-        <div><button onclick="rewind()">
+        <div><button class = "play_but" onclick="rewind()">
                 ⏪
             </button></div>
-        <div><button onclick="pause()">
+        <div><button class = "play_but" onclick="pause()">
                 ⏸️
             </button></div>
-        <div><button onclick="play()">
+        <div><button class = "play_but" onclick="play()">
                 ▶️
             </button></div>
-        <div><button onclick="forward()">
+        <div><button class = "play_but" onclick="forward()">
                 ⏩
             </button></div>
 
@@ -432,6 +460,11 @@
         $("#instruct_1").show();
         $("#instruct_2").hide();
         $("#instruct_3").hide();
+        $("#finish_but").hide();
+        $("#survey_but").hide();
+
+        // disable all four vid control buttons intially
+     
         $('.tab-panels .tabs li').on('click', function () {
 
             var $panel = $(this).closest('.tab-panels');
@@ -486,9 +519,10 @@
             }
 
             showNextVid();
+            // reset the three status buts
+            reset_task_status_buts(); 
 
             set_condition(part_id,current_video);
-
             //show next panel
             function showNextVid() {
                 // $('.Setting').show();
@@ -526,6 +560,10 @@
     function wait_to_load_video() {
         // run a separate thread to check if video is ready
         // counter++; 
+        $(".play_but").each(function(){
+            $(this).prop("disabled",true); 
+        });
+
         check_video_ready= setInterval(function () {
             video = document.getElementById('vid1');
             if (video.readyState > 0) {
@@ -734,6 +772,7 @@
 </script>
 
 <script src="JS Files/select_participant.js"></script>
+<script src= "JS Files/data_collection.js"></script>
 <!-- <script src="JS Files/second_slider_operations.js"></script> -->
 <!-- <script src="JS Files/main.js"></script> -->
 

@@ -2,6 +2,11 @@
 // var P1 = {"vid_1":"control","vid_2":"slow","vid_3":"pause"};
 // var P2 = {"vid_1":"slow","vid_2":"pause","vid_3":"control"};
 // var P3 = {"vid_1":"pause","vid_2":"control","vid_3":"slow"};
+// initialize the json output
+var output_json = {data:""};
+var data_stack = [];
+var output = { vid: "", part_id:"",condition:"", completion_time: "", num_pauses: "", avg_pause_dur:"", num_rewinds: "" };
+
 
 var conditions = {
     "P1":{"vid_1":"control","vid_2":"slow","vid_3":"pause"},
@@ -9,7 +14,7 @@ var conditions = {
     "P3":{"vid_1":"pause","vid_2":"control","vid_3":"slow"}
 }
 
-
+// choose a participant and the corresponding condition
 $(".part_id_box div input").on("click",function(){
       ;
         // get the participant id
@@ -29,6 +34,18 @@ $(".part_id_box div input").on("click",function(){
         $(".confirm_but").prop("disabled",false);
 });
 
+function update_JSON(vid,part_id,condition){
+        output['vid'] = vid;
+        output['part_id'] = part_id;
+        output['condition'] = condition;
+}
+
+function push_to_stack(){
+    var new_output = {};
+    Object.assign(new_output,output);
+    data_stack.push(new_output);
+    console.log(data_stack);
+}
 
 
 function set_condition(current_part,current_vid){
@@ -45,6 +62,8 @@ function set_condition(current_part,current_vid){
     }else{
         commands = string_to_command(condition["vid_3"]); 
     }
+
+    update_JSON(current_vid,current_part,condition[current_vid]);
 
     //apply the commands
     var speed_status = commands[0];
@@ -92,3 +111,4 @@ function string_to_command(str){
         return [false,true];
     }
 }
+
