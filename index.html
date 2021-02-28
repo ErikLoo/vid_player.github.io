@@ -181,6 +181,28 @@
             text-align: center;
         }
 
+        .scale_description>div{
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 13%;
+            text-align: center;
+        }
+
+        .scale_options>div{
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 13%;
+            text-align: center;
+        }
+
         .pause_boxes_text>div {
             display: inline-block;
             display: -moz-inline-box;
@@ -351,9 +373,32 @@
         I have completed the task!
     </button>
 
-    <button class="task_status_but" id = "survey_but">
+    <button class="task_status_but" id = "survey_but" onclick = "load_Qnaire()">
         Take a short survey!
     </button>
+
+    <!-- <div class = "survey">
+        <p>I am very satisfied with the experience</p>
+        <div class = "scale_description">
+            <div><b>P1</b></div>
+            <div><b>P2</b></div>
+            <div><b>P3</b></div>
+            <div><b>P1</b></div>
+            <div><b>P2</b></div>
+            <div><b>P3</b></div>
+            <div><b>P3</b></div>
+        </div>
+
+        <div class = "scale_options">
+            <div><input type="checkbox" class="1"></div>
+            <div><input type="checkbox" class="2"></div>
+            <div><input type="checkbox" class="3"></div>
+            <div><input type="checkbox" class="4"></div>
+            <div><input type="checkbox" class="5"></div>
+            <div><input type="checkbox" class="6"></div>
+            <div><input type="checkbox" class="7"></div>
+        </div>
+    </div> -->
 
     <section id="videos">
 

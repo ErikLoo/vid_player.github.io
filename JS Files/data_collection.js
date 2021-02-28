@@ -42,9 +42,10 @@ function stop_task_timer(){
 
 }
 
-function write_to_file(){
-
+function load_Qnaire(){
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSccYZIaPbJZoDgcFz6Yyweqs9DeSOPmGnPEM8fYeBePpFgW-w/viewform?usp=sf_link");
 }
+
 
 function reset_task_status_buts(){
   $("#ready_but").show();
@@ -53,7 +54,7 @@ function reset_task_status_buts(){
 }
 function download_file() {
   //user input txt field will be logged automatically
-  output_json['data'] = data_stack;
+  output_json['task_data'] = data_stack;
   // stringify JSON Object
   var jsonContent = JSON.stringify(output_json);
   console.log(jsonContent);

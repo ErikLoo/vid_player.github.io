@@ -3,7 +3,7 @@
 // var P2 = {"vid_1":"slow","vid_2":"pause","vid_3":"control"};
 // var P3 = {"vid_1":"pause","vid_2":"control","vid_3":"slow"};
 // initialize the json output
-var output_json = {data:""};
+var output_json = {task_data:""};
 var data_stack = [];
 var output = { vid: "", part_id:"",condition:"", completion_time: "", num_pauses: "", avg_pause_dur:"", num_rewinds: "" };
 
