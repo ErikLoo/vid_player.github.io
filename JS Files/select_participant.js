@@ -13,26 +13,34 @@ var conditions = {
     "P2":{"vid_1":"slow","vid_2":"pause","vid_3":"control"},
     "P3":{"vid_1":"pause","vid_2":"control","vid_3":"slow"}
 }
-
+init_condition(); 
 // choose a participant and the corresponding condition
-$(".part_id_box div input").on("click",function(){
-      ;
-        // get the participant id
-        part_id =  $(this).prop("class");
-        // get the current video id globally
-        var current_vid = current_video; 
-        // console.log(current_video);
-        set_condition(part_id,current_vid); 
+// $(".part_id_box div input").on("click",function(){
+//       ;
+//         // get the participant id
+//         part_id =  $(this).prop("class");
+//         // get the current video id globally
+//         var current_vid = current_video; 
+//         // console.log(current_video);
+//         set_condition(part_id,current_vid); 
 
-        // set other check boxes to unchecked
-        $(".part_id_box div input").each(function(){
-            if($(this).prop("class")!=part_id){
-                $(this).prop("checked",false);
-            }
-        });
+//         // set other check boxes to unchecked
+//         $(".part_id_box div input").each(function(){
+//             if($(this).prop("class")!=part_id){
+//                 $(this).prop("checked",false);
+//             }
+//         });
 
-        $(".confirm_but").prop("disabled",false);
-});
+//         $(".confirm_but").prop("disabled",false);
+// });
+
+function init_condition(){
+    part_id = "P" + get_current_p();
+    var current_vid = current_video; 
+    $("."+part_id).prop("checked",true); 
+    set_condition(part_id,current_vid); 
+    reload_and_hide(); 
+}
 
 function update_JSON(vid,part_id,condition){
         output['vid'] = vid;
@@ -112,3 +120,17 @@ function string_to_command(str){
     }
 }
 
+// get current participants from the URL parameters
+function get_current_p(){
+    var url_string = document.URL; //window.location.href
+    var url = new URL(url_string);
+    var c = url.searchParams.get("p");
+    console.log(c);
+    if (c==null){
+        alert("Participant id not specified in the url (for example,... index.html?p=1)");
+        alert("Add a participants id to the url or else the window will close (for example,... index.html?p=1)");
+        window.close();
+    }
+
+    return c
+}
