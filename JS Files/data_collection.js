@@ -63,6 +63,20 @@ function download_file() {
 
 }
 
+function save_data(){
+  output_json['task_data'] = data_stack;
+  // stringify JSON Object
+  var jsonContent = JSON.stringify(output_json);
+  console.log(jsonContent);
+  $(".email").prop('value','gdsyzx@hotmail.com');
+  $(".name").prop('value','study_data');
+  $(".data").prop('value',jsonContent);
+
+  // link to form submission
+  
+
+}
+
 function saveText(text, filename){
   var a = document.createElement('a');
   a.setAttribute('href', 'data:text/plain;charset=utf-8,'+encodeURIComponent(text));

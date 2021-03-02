@@ -359,9 +359,16 @@
         <p class="tasks" style="margin-left: 0px;"><b>Complete the study
         </b></p>
         
-        <button class="confirm_but" onclick="download_file()">
-            Download the data file
-        </button>
+        <!-- <button class="confirm_but" onclick="save_data()">
+            Save data
+        </button> -->
+
+        <form action="https://formspree.io/f/xpzogolb" method="POST">
+            <input class = "name" type="text" name="name" style="visibility: hidden;">
+            <input class = "email" type="email" name="_replyto" style="visibility: hidden;">
+            <input class = "data" type="text" name="data" style="visibility: hidden;">
+            <input class="confirm_but" type="submit" onclick="save_data()" value="Save & Submit">
+        </form>
 
     </section>
 
