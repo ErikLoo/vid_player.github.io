@@ -7,9 +7,10 @@ var pause_timer = 300;
 var time_start_pause = 0; 
 var time_start_play = 0;
 
-var myTimer; 
+// var myTimer; 
 var myCountUpTimer; 
 var time_passed = 0;
+
 var listenerAttached = true; 
 
 
@@ -60,7 +61,7 @@ var pause_dur = 1000;
 var pause_on = true; 
 // listen on the event
 var count = 0
-var during_puase = false; 
+var during_pause = false; 
 var pausing_function = function(){
     v_current_t = video.currentTime;
     // console.log(pause_on);
@@ -68,10 +69,12 @@ var pausing_function = function(){
     {
         if (video.paused!=true && pause_on==true){
             video.pause();
+            pause_count++; 
+            pause_loc.push(video.currentTime); 
             // blur the video
             blur_video();
-            during_puase = true; 
-            start_the_timer();
+            during_pause = true; 
+            start_the_pause_timer();
             vid_dur = video.duration;
             play_rate = 0.75;
             addition_t = (1/play_rate-1)*vid_dur;
@@ -86,30 +89,30 @@ var pausing_function = function(){
             // pause the video proprotionally to the gap length
             // pause_dur = addition_t*(end_time-start_time)/total_dur*1000;
             // pause_dur = duration_array[count]*1000
-            pause_dur = 300*1000
-            // frame_array = generate_frame_array(start_time,end_time,n_frames);
-            console.log("System pause at: " + video.currentTime + " for " + pause_dur/1000 + " seconds.");
+            // pause_dur = 300*1000
+            // // frame_array = generate_frame_array(start_time,end_time,n_frames);
+            // console.log("System pause at: " + video.currentTime + " for " + pause_dur/1000 + " seconds.");
             // remove the event listener after you paused the playback
             
             // update_src();    
             // showSnackBar();
     
-            myTimer = setTimeout(function(){
+            // myTimer = setTimeout(function(){
                 
-            //     // if the pause button has been pressed do not proceed 
-                if (intent_to_pause_during_thumb==false){
-                    hideSnackBar();
-                    // showSnackBar2();
-                    // video.currentTime = video.currentTime;
-                    console.log("System resume playing after pausing for " + pause_dur/1000 + "secs");
-                    video.play();
-                    unblur_video();
-                    during_puase = false; 
-                    clearInterval(myCountUpTimer);
-                }else{
-                    console.log("System continue pausing");
-                }
-            }, pause_dur);
+            // //     // if the pause button has been pressed do not proceed 
+            //     if (intent_to_pause_during_thumb==false){
+            //         hideSnackBar();
+            //         // showSnackBar2();
+            //         // video.currentTime = video.currentTime;
+            //         console.log("System resume playing after pausing for " + pause_dur/1000 + "secs");
+            //         video.play();
+            //         unblur_video();
+            //         during_pause = false; 
+            //         clearInterval(myCountUpTimer);
+            //     }else{
+            //         console.log("System continue pausing");
+            //     }
+            // }, pause_dur);
             // remove the listener if the pause array is finished
 
         }
@@ -203,18 +206,19 @@ function pause_control(enable_pause){
     }
 }
 
-function  start_the_timer(){
+function  start_the_pause_timer(){
     time_passed=0;
     var total_time = duration_array[count]; 
     myCountUpTimer = setInterval(function() {
         time_passed++; 
-        if (intent_to_pause_during_thumb==false){
-            // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
-            $("#time_left").text("Click play to continue"); 
+        // if (intent_to_pause_during_thumb==false){
+        //     // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
+        $("#time_left").text("Click play to continue"); 
 
-        }
+        // }
+
         showSnackBar();
-        console.log("Time passed: " + time_passed + " s");
+        console.log("Time passed during pause : " + time_passed + " s");
 
       }, 1000);
     
@@ -300,7 +304,7 @@ function generate_frame_array_time_per_frame(start_t,end_t,time_per_frame){
     return frame_array;
 }
 
-var intent_to_pause_during_thumb = false; 
+// var intent_to_pause_during_thumb = false; 
 
 function rewind(){
     video = document.getElementById('vid1');
@@ -318,6 +322,7 @@ function rewind(){
 
     showVidSnackbar(); 
     unblur_video(); 
+    rewind_count++; 
     // console.log("Rewind by 2 secs");
 
     // video.play();
@@ -341,16 +346,16 @@ function forward(){
 
 
 function play(){
-    // video = document.getElementById('vid1');
+    video = document.getElementById('vid1');
     // c_time = video.currentTime;
     // c_time = c_time + 2
     // if (c_time!=0){
     //     video.currentTime = c_time
     // }
     // console.log("Resume playing")
-    intent_to_pause_during_thumb = false; 
+    // intent_to_pause_during_thumb = false; 
     hideSnackBar();
-    var x = document.getElementById("snackbar");
+    // var x = document.getElementById("snackbar");
 
     // if (x.className == "show"){
     //     video.currentTime = video.currentTime + 0.5;
@@ -358,17 +363,21 @@ function play(){
     // }
    
     // clearTimeout(myVar);
-    if (during_puase){
-        clearTimeout(myTimer);
+    if (video.paused){
+        // clearTimeout(myTimer);
         clearInterval(myCountUpTimer);
+        pause_duration = pause_duration + time_passed;
         // duration_array[count] = time_passed; 
         // console.log(time_passed + " s has passed");
         // console.log("pause duration updated");
-        during_puase = false; 
+        // during_pause = false; 
+        console.log('Resume playing');
+        unblur_video();
+        video.play ();
+    }else{
+        alert("video already playing");
     }
-    console.log('Resume playing');
-    unblur_video();
-    video.play ();
+
 }
 
 function pause(){
@@ -384,18 +393,26 @@ function pause(){
     //     video.pause()
     // console.log("Paused by user")
     // }
-    var x = document.getElementById("snackbar");
-  if (video.paused){
-    console.log("intent to pause during pause")
-    intent_to_pause_during_thumb = true;
-    $("#time_left").text("Manually paused"); 
+//     var x = document.getElementById("snackbar");
+//   if (video.paused){
+//     console.log("intent to pause during pause")
+//     intent_to_pause_during_thumb = true;
+//     $("#time_left").text("Manually paused"); 
 
-  }else{
-    intent_to_pause_during_thumb = false; 
-  }
+//   }else{
+//     intent_to_pause_during_thumb = false; 
+//   }
 
-    video.pause();    
-    clearTimeout(myTimer);
+    if (video.paused){
+        alert("video already paused")
+    }else{
+        video.pause();    
+        // v_current_t = video.currentTime;
+        pause_count++; 
+        start_the_pause_timer();
+        pause_loc.push(video.currentTime); 
+    }
+    // clearTimeout(myTimer);
     
 }    
 

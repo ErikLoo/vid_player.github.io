@@ -18,26 +18,41 @@ function  start_task_timer(){
   
     taskCountUpTimer = setInterval(function() {
       task_time++; 
-        console.log("Task time passed: " + task_time + " s");
+        // console.log("Task time passed: " + task_time + " s");
       }, 1000);  
   }
 
+  reload_and_hide(); 
   
 }
 
 function stop_task_timer(){
 
   var complete_task = confirm("Confirm completing the task?");
+  var video = document.getElementById('vid1');
+
 
   if (complete_task){
     $("#finish_but").hide();
     $("#survey_but").show();
     clearInterval(taskCountUpTimer);
+    // clear the pause duration timer
+    clearInterval(myCountUpTimer);
+    video.pause();
     console.log("Task timer removed!");
     // get current condition & video
     // write time to JSON
     output["completion_time"] = task_time; 
+    output["num_pauses"] = pause_count; 
+    output["num_rewinds"] = rewind_count; 
+    output["pause_duration"] = pause_duration; 
+    output["pause_loc"] = pause_loc; 
+
+
+
     push_to_stack();
+    // clear count and duration
+    refresh_data(); 
   }
 
 }

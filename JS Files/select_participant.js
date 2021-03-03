@@ -5,7 +5,7 @@
 // initialize the json output
 var output_json = {task_data:""};
 var data_stack = [];
-var output = { vid: "", part_id:"",condition:"", completion_time: "", num_pauses: "", avg_pause_dur:"", num_rewinds: "" };
+var output = { vid: "", part_id:"",condition:"", completion_time: "", num_pauses: "", pause_dur:"", pause_loc:"",num_rewinds: "" };
 
 
 var conditions = {

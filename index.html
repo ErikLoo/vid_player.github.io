@@ -499,6 +499,17 @@
 <script>
     var current_video = "vid_1";
     var part_id = "P1";
+    var pause_count = 0;
+    var pause_duration = 0; 
+    var pause_loc = []; 
+    var rewind_count = 0; 
+    
+    function refresh_data(){
+        pause_count = 0;
+        rewind_count = 0; 
+        pause_duration = 0;
+        pause_loc = []; 
+    }
 
     $(function () {
 
