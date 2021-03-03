@@ -128,8 +128,7 @@ function get_current_p(){
     console.log(c);
     if (c==null){
         alert("Participant id not specified in the url (for example,... index.html?p=1)");
-        alert("Add a participants id to the url or else the window will close (for example,... index.html?p=1)");
-        window.close();
+        alert("Add a participants id to the url (for example,... index.html?p=1)");
     }
 
     return c
