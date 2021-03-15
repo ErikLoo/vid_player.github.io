@@ -224,6 +224,13 @@
             width: 49%;
             text-align: center;
         }
+
+        .vid_timeline{
+            position: fixed;  
+            z-index: 1;  
+            background-color: transparent;
+        }
+
     </style>
 
 </head>
@@ -238,7 +245,7 @@
         <ul class="tabs">
             <li rel="panel1" vid="videos/sending_zoom_invite_Trim_Trim.mp4" task="Task 1: Sending Zoom Invite"
                 class="active1" Name="gtab">T-1:Zoom Invite</li>
-            <li rel="panel2" vid="videos/create email rule_Trim_Trim.mp4" task="Task 2: Creating E-mail Rules"
+            <li rel="panel2" vid="videos/create email rule_Trim_Trim_2.mp4" task="Task 2: Creating E-mail Rules"
                 Name="btab">T-2:E-mail Rules</li>
             <li rel="panel3" vid="videos/create youtube playlist_Trim_Trim.mp4"
                 task="Task 3: Creating YouTube Playlists" Name="btab">T-3:Youtube Playlists</li>
@@ -258,7 +265,7 @@
 
             <div id="instruct_1" class=instructions>
                  Your friend, Erin Foster, will turn 37 on <u>March 27</u>. You and your friends won't be able to get together physically that day due to the pandemic. 
-                You would like to schedule a one-time <u>two-hour</u> meeting, called "<u>Erin's birthday party</u>", at <u>3pm</u> on that day so that the 
+                You would like to schedule a one-time <u>two-hour</u> meeting, called "<u>Erin's birthday party</u>", at <u>3pm</u> (Eastern Time) on that day so that the 
                 three of you (you, Bob and Erin) can celebrate Erin's brithday through a video call. 
                 <!-- You are to email them (Bob and Erin) the invitation
                 and their email addresses are <u>erin123@hotmail.com</u> and <u>bob123@hotmail.com</u>, respectively.              -->
@@ -275,8 +282,8 @@
             </div>
 
             <div id="instruct_2" class=instructions>
-                Amazon.ca has been sending you promotional emails on a regular basis. You would like to have all the Amazon-related emails go automatically into 
-                its own folder called <u>"Amazon promotions"</u> instead, including both <u>the future and the current emails</u>. 
+                Facebook has been sending you emails on a regular basis. You would like to have all emails from Facebook to go automatically into 
+                its own folder called <u>"Facebook"</u> instead, including both <u>the future and the current emails</u>. 
 
                 <div style="margin-top:8px;">
                     Watch the following video to help you configure Outlook to move emails into a specific email folder when it arrives.
@@ -290,11 +297,11 @@
 
 
             <div id="instruct_3" class=instructions>
-                You came across three music videos on YouTube: <u>XXX</u>,<u>YYY</u>, and <u>ZZZ</u>. You really liked them. Now
+                You came across three music videos on YouTube: <u>Sara Bareilles-Gravity</u>,<u>Taylor Swift-Love Story</u>, and <u>Katy Perry-Roar (Official)</u>. You really liked them. Now
                 you have decided to find these two music videos and create a playlist for
                 these three music videos so you can access them later. You are to name this playlist, <u>“My Favourite
                     Songs”</u>. Additionally, you would like to keep the list <u>private</u> so they are only accessible to you
-                    and you prefer these songs to show up this order in the playlist: <u>ZZZ-YYY-XXX</u>. 
+                    and you prefer these songs to show up this order in the playlist: <u>Katy Perry-Roar (Official), Taylor Swift-Love Story, Sara Bareilles-Gravity</u>. 
                 <div style="margin-top:8px;">
                         Watch the following video to help you create a YouTube playlist for the selected songs. 
                         Visit <a href="https://www.youtube.com/" target="_blank">YouTube.com</a> now !
@@ -427,7 +434,7 @@
     <section id="videos">
 
             <div id="left">
-                <video id="vid1" width="100%" controls>
+                <video id="vid1" width="100%" height="auto" controls>
     
                     <source src="videos/sending_zoom_invite_Trim_Trim.mp4">
     
@@ -446,13 +453,13 @@
                         <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
                     </div>
                 </div> -->
-    
-                <div id="snackbar">
+<!--     
+                <div id="snackbar" onclick="play()">
                     <p id="time_left" style="display: inline;">X</p>
                 </div>
                 <div id="vid_control_snackbar">
                     <p id="vid_status" style="display: inline;">X</p>
-                </div>
+                </div> -->
     
     
             </div>
@@ -466,37 +473,50 @@
     
             </div> -->
 
-        
-    
-        <div class="slidercontainer">
-            <div class="ticks">
-    
+        <section class = "vid_timeline">
+            <div id="snackbar" onclick="play()">
+                <p id="time_left" style="display: inline;">Snackbar!!!</p>
             </div>
-            <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
-        </div>
+            <div id="vid_control_snackbar">
+                <p id="vid_status" style="display: inline;">vid control bar</p>
+            </div>
+
+            <div class="slidercontainer">
+                <div class="ticks">
+        
+                </div>
+                <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
+            </div>
+            
+            <div class="vid_play_time">
+                <div class="vid_current_time">00:00</div>/<div class="vid_total_length">00:00</div>
+            </div>
     
-        <div class="vid_play_time">
-            <div class="vid_current_time">00:00</div>/<div class="vid_total_length">00:00</div>
-        </div>
+            <div class="vid_control">
+                <div><button class = "play_but" onclick="rewind()">
+                        ⏪
+                    </button></div>
+                <div><button class = "play_but" onclick="pause()">
+                        ⏸️
+                    </button></div>
+                <div><button class = "play_but" onclick="play()">
+                        ▶️
+                    </button></div>
+                <div><button class = "play_but" onclick="forward()">
+                        ⏩
+                    </button></div>
+        
+            </div>
+
+        </section>   
+
+
+    
     </section>
 
 
     <!-- <div id="snackbar">Some text some message..</div> -->
-    <div class="vid_control">
-        <div><button class = "play_but" onclick="rewind()">
-                ⏪
-            </button></div>
-        <div><button class = "play_but" onclick="pause()">
-                ⏸️
-            </button></div>
-        <div><button class = "play_but" onclick="play()">
-                ▶️
-            </button></div>
-        <div><button class = "play_but" onclick="forward()">
-                ⏩
-            </button></div>
-
-    </div>
+  
 
 
 
@@ -533,7 +553,7 @@
         //set up the checkbox listener once the web page starts loading
         // setupCheckbox($(".T1_Box").eq(0), $(".T1_Slider").eq(0),0);//set up checkbox again after creating new elements
         // setupCheckbox();
-        $(".vid_control").hide();
+        // $(".vid_control").css({visibility:'hidden'});
         // $(".slidercontainer").hide();
 
         $("#instruct_1").show();
@@ -632,7 +652,7 @@
 <script>
 
     // add_markers_to_slider();
-    $(".slidercontainer").hide();
+    // $(".slidercontainer").hide();
     wait_to_load_video();
     var video_loaded = false; 
 
@@ -716,27 +736,41 @@
     
     var old_pos = 0;
 
-    update_size();
+    // update_size();
 
     function showSnackBar() {
-        update_size();
-        var x = document.getElementById("snackbar");
-        x.className = "show";
+        // update_size();
+        // var x = document.getElementById("snackbar");
+        // x.className = "show";
+        $("#snackbar").css({visibility:'visible'})
+
 
     }
 
     function hideSnackBar() {
-        var x = document.getElementById("snackbar");
-        //   x.className = "show";
-        x.className = "";
+        // var x = document.getElementById("snackbar");
+        // //   x.className = "show";
+        // x.className = "";
+        $("#snackbar").css({visibility:'hidden'})
     }
 
     function showVidSnackbar() {
-        update_size();
-        var x = document.getElementById("vid_control_snackbar");
-        x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 1000);
+        // update_size();
+        // var x = document.getElementById("vid_control_snackbar");
+        // x.className = "show";
+        // setTimeout(function () { x.className = x.className.replace("show", ""); }, 1000);
+        $("#vid_control_snackbar").css({visibility:'visible'})
+        setTimeout(function () {$("#vid_control_snackbar").css({visibility:'hidden'})}, 1000);
+
+
     }
+
+    if (video_loaded){
+            add_ticks();
+        }
+    
+    update_size();
+
 
     function update_size() {
         $("#snackbar").width($("#vid1").width() / 4 + 20);
@@ -749,26 +783,26 @@
 
 
         var left_pos = window.innerWidth / 2 + $("#vid1").width() / 2 - $("#snackbar").width() - 50;
-        var left_pos2 = window.innerWidth / 2 - $("#vid_control_snackbar").width() / 2;
+        // var left_pos2 = window.innerWidth / 2 - $("#vid_control_snackbar").width() / 2;
+        var left_pos2 = window.innerWidth / 2;
 
         // console.log(left_pos);
-        $("#snackbar").css({ top: top_pos+20+2*16, left: left_pos2, position: 'relative' });
-        $("#vid_control_snackbar").css({ top: top_pos, left: left_pos2, position: 'relative' });
+        $("#snackbar").css({ top: -$("#vid1").height()/2+4*20, left: 0, position: 'relative' });
+        $("#vid_control_snackbar").css({ top: -2*20, left: 0, position: 'relative' });
 
-        console.log("call to add ticks");
+        $(".vid_timeline").css({ top: -$(".vid_timeline").height()-10, left: 0, position: 'relative' });
 
-        if (video_loaded){
-            add_ticks();
-        }
+
+       
         // add_ticks();
     }
 
     function hide_setting() {
         console.log("clicked");
         if ($('.Setting').is(":visible")) {
-            $('.Setting').hide();
+            $('.Setting').css({visibility:'hidden'})
         } else {
-            $('.Setting').show();
+            $('.Setting').css({visibility:'visible'})
         }
                 // add_markers_to_slider();
 
@@ -789,9 +823,10 @@
 
         $('.Setting').hide();
         // wait_to_load_video();
-        $(".vid_control").show();
+        $(".vid_control").css({visibility:'visible'})
         $(".slidercontainer").show();
-
+        
+        update_size();
         // add_markers_to_slider();
 
     }

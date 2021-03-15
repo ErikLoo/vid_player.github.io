@@ -1,19 +1,15 @@
 #vid_control_snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
+  visibility: hidden;
   background-color: #333; /* Black background color */
   color: #fff; /* White text color */
   text-align: center; /* Centered text */
   padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
   font-size: 17px;
+  margin-left: auto;
+  margin-right:auto;
 }
 
-#vid_control_snackbar.show {
-  visibility: visible;
-  /* -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s; */
-}
+
 
 /* @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;} 

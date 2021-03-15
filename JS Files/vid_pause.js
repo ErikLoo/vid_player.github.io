@@ -24,9 +24,14 @@ var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 30
 vid_1_speed = 154.85;
 
 // properties of vid 2
-var vid_2_pause_array = remove_redundant_pause([14.08, 16.92, 28.42, 35.44, 44.02, 48.31, 51.63, 58.12, 60.32, 62.84, 68.7, 78.46, 81.59, 84.77, 94.01, 103.94, 107.51, 119.24, 125.1, 130.8, 133.11, 146.98]);
+// var vid_2_pause_array = remove_redundant_pause([14.08, 16.92, 28.42, 35.44, 44.02, 48.31, 51.63, 58.12, 60.32, 62.84, 68.7, 78.46, 81.59, 84.77, 94.01, 103.94, 107.51, 119.24, 125.1, 130.8, 133.11, 146.98]);
+// var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
+// vid_2_speed = 178.29;
+
+var vid_2_pause_array = remove_redundant_pause([9.58, 12.21, 14.41, 20.67, 26.49, 33.25, 37.01, 40.52, 42.48, 45.52, 49.26, 56.45, 60.82, 72.33, 77.93, 84.17, 88.29, 95.36, 98.97, 107.13, 109.21, 121.85]);
 var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
 vid_2_speed = 178.29;
+
 
 var vid_3_pause_array = remove_redundant_pause([13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94]);
 var vid_3_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
@@ -72,7 +77,7 @@ var pausing_function = function(){
             pause_count++; 
             pause_loc.push(video.currentTime); 
             // blur the video
-            blur_video();
+            // blur_video();
             during_pause = true; 
             start_the_pause_timer();
             vid_dur = video.duration;
@@ -213,7 +218,7 @@ function  start_the_pause_timer(){
         time_passed++; 
         // if (intent_to_pause_during_thumb==false){
         //     // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
-        $("#time_left").text("Click play to continue"); 
+        $("#time_left").text("Click here to continue"); 
 
         // }
 
