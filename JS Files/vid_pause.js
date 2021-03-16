@@ -78,6 +78,7 @@ var pausing_function = function(){
             pause_loc.push(video.currentTime); 
             // blur the video
             // blur_video();
+            darken_video(); 
             during_pause = true; 
             start_the_pause_timer();
             vid_dur = video.duration;
@@ -101,7 +102,7 @@ var pausing_function = function(){
             
             // update_src();    
             // showSnackBar();
-    
+            
             // myTimer = setTimeout(function(){
                 
             // //     // if the pause button has been pressed do not proceed 
@@ -214,15 +215,16 @@ function pause_control(enable_pause){
 function  start_the_pause_timer(){
     time_passed=0;
     var total_time = duration_array[count]; 
+    showSnackBar();
     myCountUpTimer = setInterval(function() {
         time_passed++; 
         // if (intent_to_pause_during_thumb==false){
         //     // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
-        $("#time_left").text("Click here to continue"); 
+        // $("#time_left").text("Click here to continue"); 
 
         // }
 
-        showSnackBar();
+        // showSnackBar();
         console.log("Time passed during pause : " + time_passed + " s");
 
       }, 1000);
@@ -326,7 +328,8 @@ function rewind(){
     $("#vid_status").text("Rewind by 5 seconds"); 
 
     showVidSnackbar(); 
-    unblur_video(); 
+    // unblur_video(); 
+    undarken_video(); 
     rewind_count++; 
     // console.log("Rewind by 2 secs");
 
@@ -360,6 +363,8 @@ function play(){
     // console.log("Resume playing")
     // intent_to_pause_during_thumb = false; 
     hideSnackBar();
+    $("#bar_txt").text("Auto Pause"); 
+
     // var x = document.getElementById("snackbar");
 
     // if (x.className == "show"){
@@ -414,6 +419,7 @@ function pause(){
         video.pause();    
         // v_current_t = video.currentTime;
         pause_count++; 
+        $("#bar_txt").text("Video Paused"); 
         start_the_pause_timer();
         pause_loc.push(video.currentTime); 
     }
@@ -442,4 +448,12 @@ function blur_video(){
 
 function unblur_video(){
     $("#vid1").css({" -webkit-filter": "blur(0px)","filter": "blur(0px)"});
+}
+
+function darken_video(){
+    $("#vid1").css({"filter": "brightness(50%)"});
+}
+
+function undarken_video(){
+    $("#vid1").css({"filter": "brightness(1)"});
 }

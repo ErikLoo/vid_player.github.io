@@ -475,7 +475,9 @@
 
         <section class = "vid_timeline">
             <div id="snackbar" onclick="play()">
-                <p id="time_left" style="display: inline;">Snackbar!!!</p>
+                <div id = "bar_txt" style="font-size: 20px;">Auto Pause</div>
+                <div>Click here to continue</div>
+                <!-- <div id="time_left" style="display: inline;">Snackbar!!!</div> -->
             </div>
             <div id="vid_control_snackbar">
                 <p id="vid_status" style="display: inline;">vid control bar</p>
@@ -774,7 +776,7 @@
 
     function update_size() {
         $("#snackbar").width($("#vid1").width() / 4 + 20);
-        $("#snackbar").height(20);
+        // $("#snackbar").height(20);
         $("#vid_control_snackbar").height(20);
         $("#vid_control_snackbar").width($("#vid1").width() / 4 + 20);
 
@@ -787,7 +789,7 @@
         var left_pos2 = window.innerWidth / 2;
 
         // console.log(left_pos);
-        $("#snackbar").css({ top: -$("#vid1").height()/2+4*20, left: 0, position: 'relative' });
+        $("#snackbar").css({ top: -$("#vid1").height()/2+6*20, left: 0, position: 'relative' });
         $("#vid_control_snackbar").css({ top: -2*20, left: 0, position: 'relative' });
 
         $(".vid_timeline").css({ top: -$(".vid_timeline").height()-10, left: 0, position: 'relative' });
