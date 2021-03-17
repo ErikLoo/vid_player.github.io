@@ -264,9 +264,14 @@
 
 
             <div id="instruct_1" class=instructions>
-                 Your friend, Erin Foster, will turn 37 on <u>March 27</u>. You and your friends won't be able to get together physically that day due to the pandemic. 
+                 <!-- Your friend, Erin Foster, will turn 37 on <u>March 27</u>. You and your friends won't be able to get together physically that day due to the pandemic. 
                 You would like to schedule a one-time <u>two-hour</u> meeting, called "<u>Erin's birthday party</u>", at <u>3pm</u> (Eastern Time) on that day so that the 
-                three of you (you, Bob and Erin) can celebrate Erin's brithday through a video call. 
+                three of you (you, Bob and Erin) can celebrate Erin's brithday through a video call.  -->
+
+                During the pandemic, you and some of your friends decide to hold an online reading group on a regular basis, where each of you will talk about an interesting article you have
+                read in the prior week. This <u>two-hour</u> meeting is going to take place at <u>2:00 pm (Eastern Time)every Sunday until the end of April</u>. Additionally, you
+                would like to meeting to automatically record itself so you don't miss some of the highlights during the meeting. 
+           
                 <!-- You are to email them (Bob and Erin) the invitation
                 and their email addresses are <u>erin123@hotmail.com</u> and <u>bob123@hotmail.com</u>, respectively.              -->
                 <div style="margin-top:8px;">
@@ -298,7 +303,7 @@
 
             <div id="instruct_3" class=instructions>
                 You came across three music videos on YouTube: <u>Sara Bareilles-Gravity</u>,<u>Taylor Swift-Love Story</u>, and <u>Katy Perry-Roar (Official)</u>. You really liked them. Now
-                you have decided to find these two music videos and create a playlist for
+                you have decided to find these three music videos and create a playlist for
                 these three music videos so you can access them later. You are to name this playlist, <u>“My Favourite
                     Songs”</u>. Additionally, you would like to keep the list <u>private</u> so they are only accessible to you
                     and you prefer these songs to show up this order in the playlist: <u>Katy Perry-Roar (Official), Taylor Swift-Love Story, Sara Bareilles-Gravity</u>. 
@@ -475,8 +480,8 @@
 
         <section class = "vid_timeline">
             <div id="snackbar" onclick="play()">
-                <div id = "bar_txt" style="font-size: 20px;">Auto Pause</div>
-                <div>Click here to continue</div>
+                <div id = "bar_txt">Auto Pause</div>
+                <div style="font-size: 20px;">Click here to continue</div>
                 <!-- <div id="time_left" style="display: inline;">Snackbar!!!</div> -->
             </div>
             <div id="vid_control_snackbar">
@@ -802,9 +807,11 @@
     function hide_setting() {
         console.log("clicked");
         if ($('.Setting').is(":visible")) {
-            $('.Setting').css({visibility:'hidden'})
+            // $('.Setting').css({visibility:'hidden'})
+            $('.Setting').hide(); 
         } else {
-            $('.Setting').css({visibility:'visible'})
+            // $('.Setting').css({visibility:'visible'})
+            $('.Setting').show(); 
         }
                 // add_markers_to_slider();
 
