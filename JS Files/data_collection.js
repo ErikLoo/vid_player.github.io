@@ -23,7 +23,8 @@ function  start_task_timer(){
   }
 
   reload_and_hide(); 
-  
+  // $(".vid_timeline").show();
+
 }
 
 function stop_task_timer(){
@@ -47,8 +48,6 @@ function stop_task_timer(){
     output["num_rewinds"] = rewind_count; 
     output["pause_duration"] = pause_duration; 
     output["pause_loc"] = pause_loc; 
-
-
 
     push_to_stack();
     // clear count and duration

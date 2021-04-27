@@ -244,7 +244,7 @@
     <div class="tab-panels">
         <ul class="tabs">
             <li rel="panel1" vid="videos/sending_zoom_invite_Trim_Trim.mp4" task="Task 1: Sending Zoom Invite"
-                class="active1" Name="gtab">T-1:Zoom Invite</li>
+                Name="gtab">T-1:Zoom Invite</li>
             <li rel="panel2" vid="videos/create email rule_Trim_Trim_2.mp4" task="Task 2: Creating E-mail Rules"
                 Name="btab">T-2:E-mail Rules</li>
             <li rel="panel3" vid="videos/create youtube playlist_Trim_Trim.mp4"
@@ -259,7 +259,7 @@
             </button>
         </ul>
 
-        <div id="panel1" class="panel active">
+        <div id="panel1" class="instruction_panel">
             <!-- add the content of task 1 -->
 
 
@@ -323,6 +323,7 @@
 
 
     </div>
+    <section class="UI_page">
 
     <section class="Setting">
         <p><b>Select a Participant ID</b></p>
@@ -400,8 +401,7 @@
         </form>
 
     </section>
-
-    <button class="task_status_but" id= "ready_but" onclick="start_task_timer()">
+         <button class="task_status_but" id= "ready_but" onclick="start_task_timer()">
         I am ready to watch the video!
     </button>
 
@@ -413,29 +413,6 @@
         Take a short survey!
     </button>
 
-    <!-- <div class = "survey">
-        <p>I am very satisfied with the experience</p>
-        <div class = "scale_description">
-            <div><b>P1</b></div>
-            <div><b>P2</b></div>
-            <div><b>P3</b></div>
-            <div><b>P1</b></div>
-            <div><b>P2</b></div>
-            <div><b>P3</b></div>
-            <div><b>P3</b></div>
-        </div>
-
-        <div class = "scale_options">
-            <div><input type="checkbox" class="1"></div>
-            <div><input type="checkbox" class="2"></div>
-            <div><input type="checkbox" class="3"></div>
-            <div><input type="checkbox" class="4"></div>
-            <div><input type="checkbox" class="5"></div>
-            <div><input type="checkbox" class="6"></div>
-            <div><input type="checkbox" class="7"></div>
-        </div>
-    </div> -->
-
     <section id="videos">
 
             <div id="left">
@@ -445,38 +422,7 @@
     
                 </video>
     
-                <!-- <div id="snackbar">
-                    <div class = "img_first_row">
-                        <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                        <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                        <img width=300px src="https://pbs.twimg.com/media/CX1PAZwVAAANemW.jpg">
-                    </div>
-            
-                    <div class = "img_second_row">
-                        <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                        <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                        <img width=300px src="http://images5.fanpop.com/image/photos/30900000/beautiful-pic-different-beautiful-pictures-30958249-1600-1200.jpg">
-                    </div>
-                </div> -->
-<!--     
-                <div id="snackbar" onclick="play()">
-                    <p id="time_left" style="display: inline;">X</p>
-                </div>
-                <div id="vid_control_snackbar">
-                    <p id="vid_status" style="display: inline;">X</p>
-                </div> -->
-    
-    
             </div>
-    
-            <!-- <div id="right">
-                <video id="vid2" width="400px" controls>
-    
-                    <source src="videos/Tea making soundless.mp4">
-    
-                </video>
-    
-            </div> -->
 
         <section class = "vid_timeline">
             <div id="snackbar" onclick="play()">
@@ -521,17 +467,7 @@
     
     </section>
 
-
-    <!-- <div id="snackbar">Some text some message..</div> -->
-  
-
-
-
-    <!-- <p class="task_instruct" style="margin-left:10px;"><b>Task Instructions
-    </b></p> -->
-
-
-    <!-- <div id="snackbar2">Resume playing...</div> -->
+    </section>
 
 
 </body>
@@ -649,7 +585,11 @@
                 // $(".vid_control").hide();
                 // setupCheckbox();
                 wait_to_load_video();
-                // clearTimeout(myTimer);
+                
+                show_UI_page();
+
+                // $(".vid_timeline").hide();
+
 
             }
         });
@@ -662,7 +602,6 @@
     // $(".slidercontainer").hide();
     wait_to_load_video();
     var video_loaded = false; 
-
     function wait_to_load_video() {
         // run a separate thread to check if video is ready
         // counter++; 
@@ -737,13 +676,27 @@
                 // console.log("check videor ready timer removed!!!")
             }
 
+    
+        function reorder_panel(){
+            var ordering = {
+            "P1":["panel1","panel2","panel3"],
+            "P2":["panel3","panel1","panel2"],
+            "P3":["panel2","panel3","panel1"]
+            }
+            part_id = "P" + get_current_p();
+            order = ordering[part_id];
+            $("[rel='"+order[0]+"']").after($("[rel='"+order[1]+"']"));
+            $("[rel='"+order[1]+"']").after($("[rel='"+order[2]+"']"));
+        }
+
 </script>
 
 <script>
     
     var old_pos = 0;
 
-    // update_size();
+    hide_UI_page();
+
 
     function showSnackBar() {
         // update_size();
@@ -805,7 +758,6 @@
     }
 
     function hide_setting() {
-        console.log("clicked");
         if ($('.Setting').is(":visible")) {
             // $('.Setting').css({visibility:'hidden'})
             $('.Setting').hide(); 
@@ -839,6 +791,18 @@
         // add_markers_to_slider();
 
     }
+
+    function hide_UI_page(){
+        $(".UI_page").hide();
+        $(".instruction_panel").hide();
+    }
+
+    function show_UI_page(){
+        $(".UI_page").show();
+        $(".instruction_panel").show();
+        reload_and_hide();
+    }
+
 
     // slider drag and drop
     var drag_and_drop = function () {

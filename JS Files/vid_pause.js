@@ -222,7 +222,7 @@ function  start_the_pause_timer(){
     var total_time = duration_array[count]; 
     showSnackBar();
     myCountUpTimer = setInterval(function() {
-        time_passed++; 
+        pause_duration++; 
         // if (intent_to_pause_during_thumb==false){
         //     // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
         // $("#time_left").text("Click here to continue"); 
@@ -230,7 +230,7 @@ function  start_the_pause_timer(){
         // }
 
         // showSnackBar();
-        console.log("Time passed during pause : " + time_passed + " s");
+        console.log("Time passed during pause : " + pause_duration + " s");
 
       }, 1000);
     

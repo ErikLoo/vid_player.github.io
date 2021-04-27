@@ -10,9 +10,16 @@ var output = { vid: "", part_id:"",condition:"", completion_time: "", num_pauses
 
 var conditions = {
     "P1":{"vid_1":"control","vid_2":"slow","vid_3":"pause"},
-    "P2":{"vid_1":"slow","vid_2":"pause","vid_3":"control"},
-    "P3":{"vid_1":"pause","vid_2":"control","vid_3":"slow"}
+    "P2":{"vid_3":"slow","vid_1":"pause","vid_2":"control"},
+    "P3":{"vid_2":"pause","vid_3":"control","vid_1":"slow"}
 }
+
+var ordering = {
+    "P1":["panel1","panel2","panel3"],
+    "P2":["panel3","panel1","panel2"],
+    "P3":["panel2","panel3","panel1"]
+    }
+
 init_condition(); 
 // choose a participant and the corresponding condition
 // $(".part_id_box div input").on("click",function(){
@@ -35,7 +42,12 @@ init_condition();
 // });
 
 function init_condition(){
+
     part_id = "P" + get_current_p();
+    order = ordering[part_id];
+    $("[rel='"+order[0]+"']").after($("[rel='"+order[1]+"']"));
+    $("[rel='"+order[1]+"']").after($("[rel='"+order[2]+"']"));
+    $("[rel='"+order[1]+"']").css({ margin:5});
     var current_vid = current_video; 
     $("."+part_id).prop("checked",true); 
     set_condition(part_id,current_vid); 
@@ -91,7 +103,7 @@ function set_condition(current_part,current_vid){
     }
 
     if(pause_status){
-        console.log("turn on pause control");
+        console.log("Turn on pause control");
         $(".pause_on").prop("checked",true);
         $(".pause_off").prop("checked",false);
         pause_control(true); 
