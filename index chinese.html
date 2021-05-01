@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video Tutorial</title>
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="CSS Files/slider_styles.css">
+    <link rel="stylesheet" href="CSS Files/panel_styles.css">
+    <!-- <link rel="stylesheet" href="CSS Files/snackbar.css"> -->
+    <link rel="stylesheet" href="CSS Files/new_snack_bar.css">
+    <link rel="stylesheet" href="CSS Files/snackbar.css">
+    <link rel="stylesheet" href="CSS Files/vid_slider.css">
+    
+    <style type="text/css">
+        body {
+            max-width: 2100px;
+            background: white;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #title {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* #snackbar img{
+            border-style: solid;
+            border-color: green;
+        } */
+
+        bow section {
+            display: flex;
+            flex-direction: row;
+
+            /* flex-shrink: 30px; */
+        }
+
+        #left {
+            width: 98%;
+            /* background: green; */
+            margin-left: auto;
+            margin-right: auto;
+            border-style: solid;
+            border-color: green;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            
+        }
+
+        .task_status_but{
+            font-size: 35px;
+            border-radius: 10px;
+            border-width: 3px;
+            cursor: pointer;
+        }
+
+        .task_status_but:hover{
+            color: #fff;
+            background: #666;
+        }
+
+        .confirm_but {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: rgb(0, 124, 225);
+            border-color: black;
+            border-width: 3px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .confirm_but:disabled{
+            background: #ccc;
+        }
+
+        .instructions {
+            margin-left: 30px;
+            margin-top: 0px;
+            font-size: 35px;
+            text-align: justify;
+            text-justify: inter-word;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .vid_play_time {
+            display: flex;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size: 20px;
+
+            /* text-align: center; */
+        }
+
+        .ticks {
+            /* background-color: blue; */
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .vid_play_time>div {
+            /* display: inline-block;  */
+            width: 100%;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .vid_control>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 24%;
+            text-align: center;
+        }
+
+        .vid_control>div>button {
+            font-size: 40px;
+            cursor: pointer;
+            background-color: Transparent;
+            border: none;
+        }
+
+        .part_id_text>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 32%;
+            text-align: center;
+        }
+
+        .part_id_box>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 32%;
+            text-align: center;
+        }
+
+        .check_boxes_text>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 49%;
+            text-align: center;
+        }
+
+        .check_boxes>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 49%;
+            text-align: center;
+        }
+
+        .scale_description>div{
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 13%;
+            text-align: center;
+        }
+
+        .scale_options>div{
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 13%;
+            text-align: center;
+        }
+
+        .pause_boxes_text>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 49%;
+            text-align: center;
+        }
+
+        .pause_boxes>div {
+            display: inline-block;
+            display: -moz-inline-box;
+            *display: inline;
+            /* For IE7 */
+            zoom: 1;
+            /* Trigger hasLayout */
+            width: 49%;
+            text-align: center;
+        }
+
+        .vid_timeline{
+            position: fixed;  
+            z-index: 1;  
+            background-color: transparent;
+        }
+
+    </style>
+
+</head>
+
+<body onresize="update_size()">
+    <!-- <div id="title">
+        <p><b id = "task_id">Task 1: Sending Zoom Invite by E-mail</b></p>
+        
+    </div> -->
+
+    <div class="tab-panels">
+        <ul class="tabs">
+            <li rel="panel1" vid="video_Chinese/zoom_meeting_chinese.mp4" task="Task 1: Sending Zoom Invite"
+                Name="gtab">T-1:设置读书活动</li>
+            <li rel="panel2" vid="video_Chinese/email_rules.mp4" task="Task 2: Creating E-mail Rules"
+                Name="btab">T-2:创建邮件规则</li>
+            <li rel="panel3" vid="video_Chinese/bilibili_playlist.mp4"
+                task="Task 3: Creating YouTube Playlists" Name="btab">T-3:创建收藏夹</li>
+            <button onclick="hide_setting()" style="float: right;
+            margin-right: 30px;
+            font-size: 20px;
+            cursor:pointer;
+            background-color: Transparent;
+            border: none;">
+                ⚙️
+            </button>
+        </ul>
+
+        <div id="panel1" class="instruction_panel">
+            <!-- add the content of task 1 -->
+
+
+            <div id="instruct_1" class=instructions>
+                在疫情期间,你和你的朋友们决定使用zoom来举办一个线上读书活动。在活动上你们会分享你们上一周读过的好书。这个读书活动将会于<u>5月30日</u>开始，于<u>6月30日</u>结束，
+                在北京时间<u>每个周日</u>的<u>下午两点</u>举行，并且持续<u>两个小时</u>。除此之外你希望计算机会自动的记录每次的活动。
+                <div style="margin-top:8px;">
+                    观看以下的视频有助于你学习如何设置该活动。
+                    访问<a href="https://zoom.us/signin" target="_blank">Zoom.us</a>!
+                </div>  
+
+                <div style="margin-top:8px;font-size: 30px;">
+                    邮箱：<b>dgp_test_subject@outlook.com </b>|密码:<b>Uoft2020</b>
+                </div>
+
+
+            </div>
+
+            <div id="instruct_2" class=instructions>
+                eBay购物网站每天都会给你发很多邮件，而整理这些让你觉得无比烦恼。现在你决定在邮箱里创建一条规则。在该规则之下，邮箱会自动的把所有来自于eBay的邮件都归档到一个的文件夹下。你决定给这个文件夹取名叫做 “eBay”。
+                <div style="margin-top:8px;">
+                    观看以下的视频有助于你学习如何设置邮件规则。
+                    访问<a href="https://outlook.live.com/mail/0/inbox" target="_blank">Outlook.com</a> !
+                </div>
+
+                <div style="margin-top:8px;font-size: 30px;">
+                    邮箱:<b>dgp_test_subject@outlook.com </b>|密码:<b>Uoft2020</b>
+                </div>
+            </div>
+
+
+            <div id="instruct_3" class=instructions>
+                你在bilibili视频平台上看到了三个音乐视频:
+                    <div>1.希望的田野上</div>
+                    <div>2.我爱你中国</div>
+                    <div>3.友谊天长地久</div>
+                你非常喜爱这些视频，于是你打算在视频平台上创建一个收藏夹将这三个视频收藏起来。你打算给你的收藏夹起名叫做 “music”，并且将其设置为<u>随机播放模式</u>。
+                <div style="margin-top:8px;">
+                        观看以下的视频有助于你学习如何创建收藏夹。
+                        访问 <a href="https://www.bilibili.com/?spm_id_from=666.25.b_696e7465726e6174696f6e616c486561646572.1" target="_blank">bilibili.com</a> now !
+                </div>
+
+                <div style="margin-top:8px;font-size: 30px;">
+                    邮箱:<b>dgp_test_subject@outlook.com </b>|密码:<b>Uoft2020</b>
+                </div>
+            </div>
+
+            <!-- <p class="tasks" style="margin-left: 0px;"><b>Video Controls
+            </b></p> -->
+        </div>
+
+
+    </div>
+    <section class="UI_page">
+
+    <section class="Setting">
+        <p><b>Select a Participant ID</b></p>
+
+        <div class="part_id_text">
+
+            <div><b>P1</b></div>
+            <div><b>P2</b></div>
+            <div><b>P3</b></div>
+            <!-- <div><b>P4</b></div>
+            <div><b>P5</b></div> -->
+
+        </div>
+
+        <div class="part_id_box">
+
+            <div><input type="checkbox" class="P1"></div>
+            <div><input type="checkbox" class="P2"></div>
+            <div><input type="checkbox" class="P3"></div>
+            <!-- <div><input type="checkbox" class="P4"></div>
+            <div><input type="checkbox" class="P5"></div> -->
+
+        </div>
+
+        <p class="tasks" style="margin-left: 0px;"><b>Video Playback Speed (adjusted to 120 wpm)
+            </b></p>
+
+        <div class="check_boxes_text">
+
+            <div><b>ON</b></div>
+            <!-- <div><b>0.75x</b></div> -->
+            <div><b>OFF</b></div>
+
+        </div>
+
+        <div class="check_boxes" style="pointer-events: none;">
+
+            <div><input type="checkbox" class="v_on" ></div>
+            <!-- <div><input type="checkbox" class="v_75"></div> -->
+            <div><input type="checkbox" class="v_off" ></div>
+
+        </div>
+
+
+        <p class="tasks" style="margin-left: 0px;"><b>Video Pause
+            </b></p>
+
+        <div class="pause_boxes_text">
+            <div><b>ON</b></div>
+            <div><b>OFF</b></div>
+        </div>
+
+        <div class="pause_boxes" style="pointer-events: none;">
+            <div><input type="checkbox" class="pause_on" ></div>
+            <div><input type="checkbox" class="pause_off" ></div>
+        </div>
+
+        <button class="confirm_but" disabled onclick="reload_and_hide()" style="visibility: hidden;">
+            Confirm conditions
+        </button>
+
+        
+        <p class="tasks" style="margin-left: 0px;"><b>Complete the study
+        </b></p>
+        
+        <!-- <button class="confirm_but" onclick="save_data()">
+            Save data
+        </button> -->
+
+        <form action="https://formspree.io/f/xpzogolb" method="POST">
+            <input class = "name" type="text" name="name" style="visibility: hidden;">
+            <input class = "email" type="email" name="_replyto" style="visibility: hidden;">
+            <input class = "data" type="text" name="data" style="visibility: hidden;">
+            <input class="confirm_but" type="submit" onclick="save_data()" value="Save & Submit">
+        </form>
+
+    </section>
+         <button class="task_status_but" id= "ready_but" onclick="start_task_timer()">
+        我已经准备好了!
+    </button>
+
+    <button class="task_status_but" id = "finish_but" onclick= "stop_task_timer()">
+        我已经完成了任务!
+    </button>
+
+    <button class="task_status_but" id = "survey_but" onclick = "load_Qnaire()">
+        填写问卷!
+    </button>
+
+    <section id="videos">
+
+            <div id="left">
+                <video id="vid1" width="100%" height="auto" controls>
+    
+                    <source src="videos/sending_zoom_invite_Trim_Trim.mp4">
+    
+                </video>
+    
+            </div>
+
+        <section class = "vid_timeline">
+            <div id="snackbar" onclick="play()">
+                <div id = "bar_txt">自动暂停</div>
+                <div style="font-size: 20px;">点击继续播放</div>
+                <!-- <div id="time_left" style="display: inline;">Snackbar!!!</div> -->
+            </div>
+            <div id="vid_control_snackbar">
+                <p id="vid_status" style="display: inline;">vid control bar</p>
+            </div>
+
+            <div class="slidercontainer">
+                <div class="ticks">
+        
+                </div>
+                <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
+            </div>
+            
+            <div class="vid_play_time" style="background-color: black;">
+                <div class="vid_current_time" style="color: white;">00:00</div>
+                <div style="color: white;">/</div>
+                <div class="vid_total_length"  style="color: white;">00:00</div>
+            </div>
+    
+            <div class="vid_control">
+                <div><button class = "play_but" onclick="rewind()">
+                        ⏪
+                    </button></div>
+                <div><button class = "play_but" onclick="pause()">
+                        ⏸️
+                    </button></div>
+                <div><button class = "play_but" onclick="play()">
+                        ▶️
+                    </button></div>
+                <div><button class = "play_but" onclick="forward()">
+                        ⏩
+                    </button></div>
+        
+            </div>
+
+        </section>   
+
+
+    
+    </section>
+
+    </section>
+
+
+</body>
+
+<script src="bower/bower_components/jquery/dist/jquery.js"></script>
+<script src="JS Files/vid_pause_c.js"></script>
+<!-- <script src="JS Files/checkbox.js"></script> -->
+<!-- <script src="JS Files/vid_pause.js"></script> -->
+<script>
+    var current_video = "vid_1";
+    var part_id = "P1";
+    var pause_count = 0;
+    var pause_duration = 0; 
+    var pause_loc = []; 
+    var rewind_count = 0; 
+    
+    function refresh_data(){
+        pause_count = 0;
+        rewind_count = 0; 
+        pause_duration = 0;
+        pause_loc = []; 
+    }
+
+    $(function () {
+
+        //set up the checkbox listener once the web page starts loading
+        // setupCheckbox($(".T1_Box").eq(0), $(".T1_Slider").eq(0),0);//set up checkbox again after creating new elements
+        // setupCheckbox();
+        // $(".vid_control").css({visibility:'hidden'});
+        // $(".slidercontainer").hide();
+
+        $("#instruct_1").show();
+        $("#instruct_2").hide();
+        $("#instruct_3").hide();
+        $("#finish_but").hide();
+        $("#survey_but").hide();
+
+        // disable all four vid control buttons intially
+     
+        $('.tab-panels .tabs li').on('click', function () {
+
+            var $panel = $(this).closest('.tab-panels');
+            $panel.find('.tabs li.active2').removeClass('active2');
+            $panel.find('.tabs li.active1').removeClass('active1');
+            $panel.find('.tabs li.active3').removeClass('active3');
+
+            if ($(this).attr("rel") == "panel1") {
+                pause_array = vid_1_pause_array;
+                duration_array = vid_1_duration_array;
+                current_video = "vid_1";
+                $("#vid1").attr("vid_speed",vid_1_speed);
+                $(this).addClass('active1');
+            }
+            else if (($(this).attr("rel") == "panel2")) {
+                pause_array = vid_2_pause_array;
+                duration_array = vid_2_duration_array;
+                current_video = "vid_2";
+
+                $("#vid1").attr("vid_speed",vid_2_speed);
+
+                $(this).addClass('active2');
+            }
+            else {
+                pause_array = vid_3_pause_array;
+                duration_array = vid_3_duration_array;
+                current_video = "vid_3";
+
+                $("#vid1").attr("vid_speed",vid_3_speed);
+                $(this).addClass('active3');
+            }
+
+            //figure out which panel to show
+            var panelToShow = $(this).attr('rel');
+            var vid_src = $(this).attr('vid');
+            var task_txt = $(this).attr('task');
+
+            if (panelToShow == "panel1") {
+                $("#instruct_1").show();
+                $("#instruct_2").hide();
+                $("#instruct_3").hide();
+
+            } else if (panelToShow == "panel2") {
+                $("#instruct_2").show();
+                $("#instruct_1").hide();
+                $("#instruct_3").hide();
+
+            } else {
+                $("#instruct_3").show();
+                $("#instruct_1").hide();
+                $("#instruct_2").hide();
+            }
+
+            showNextVid();
+            // reset the three status buts
+            reset_task_status_buts(); 
+
+            set_condition(part_id,current_video);
+            //show next panel
+            function showNextVid() {
+                // $('.Setting').show();
+
+                $(this).removeClass('active');
+
+                // swtich to another vid
+                $('#' + panelToShow).slideDown(300, function () {
+                    $(this).addClass('active');
+                });
+
+                // $("#task_id").text(task_txt);
+                // reload the video
+                video = document.getElementById('vid1');
+                // alert(vid_src);
+                video.src = vid_src;
+                video.load();
+                // $(".vid_control").hide();
+                // setupCheckbox();
+                wait_to_load_video();
+                
+                show_UI_page();
+
+                // $(".vid_timeline").hide();
+
+
+            }
+        });
+    });
+</script>
+
+<script>
+
+    // add_markers_to_slider();
+    // $(".slidercontainer").hide();
+    wait_to_load_video();
+    var video_loaded = false; 
+    function wait_to_load_video() {
+        // run a separate thread to check if video is ready
+        // counter++; 
+        $(".play_but").each(function(){
+            $(this).prop("disabled",true); 
+        });
+
+        check_video_ready= setInterval(function () {
+            video = document.getElementById('vid1');
+            if (video.readyState > 0) {
+            //     $(".slidercontainer").show();
+               add_ticks();
+               console.log("video loaded");
+               video_loaded = true; 
+            }else{
+                console.log("trying to load video");
+
+            video_loaded = false; 
+
+            }
+            clearInterval(check_video_ready);
+        }, 500);
+
+    
+
+    }
+
+    function add_ticks(){
+         //clear the entire div
+                 console.log("add ticks");
+                $(".ticks").width($(".slider").width()-21.9792);
+                // video = document.getElementById('vid1');
+                $(".ticks").empty();
+                // var top_pos = $(".slider").height()
+                // var left_pos = window.innerWidth/2+$("#vid1").width()/2-$("#snackbar").width()-50; 
+                video = document.getElementById('vid1');
+
+                var tick_array = pause_array;
+                var vid_duration = video.duration;
+
+                var marker = "";
+                
+                // generatae first
+                for (i = 0; i < tick_array.length; i++) {
+                    marker_id = 'tick_' + i;
+                    var marker = "<div id=" + marker_id + ">🔻</div>";
+                    $(".ticks").append(marker);
+                    // $("#" + marker_id).css({ top: 0, left: -21.9792/2, position: 'relative' });
+
+                } 
+                
+                // re-position the ticks later
+                for (i = 0; i < tick_array.length; i++) {
+                    marker_id = 'tick_' + i;
+                    // var marker = "<div id=" + marker_id + ">🔻</div>";
+                    var left_pos = (tick_array[i]-0.3) / vid_duration* $(".ticks").width();
+                    var universal_offset = -21.9792/2; 
+                    var indiv_offset = -i*$("#" + marker_id).width();
+                    var total_offset = universal_offset + indiv_offset
+                    // $(".ticks").append(marker);
+                    $("#" + marker_id).css({ top: 0, left:left_pos+total_offset, position: 'relative' });
+                } 
+                
+                clearInterval(check_video_ready);
+                // delete check_video_ready;
+                // print(typeof status);
+                // console.log(status);
+                // console.log("Remove timer " + counter);
+                // console.log(check_video_ready)
+                // console.log(check_video_ready==null);
+
+                // console.log("check videor ready timer removed!!!")
+            }
+
+    
+        function reorder_panel(){
+            var ordering = {
+            "P1":["panel1","panel2","panel3"],
+            "P2":["panel3","panel1","panel2"],
+            "P3":["panel2","panel3","panel1"]
+            }
+            part_id = "P" + get_current_p();
+            order = ordering[part_id];
+            $("[rel='"+order[0]+"']").after($("[rel='"+order[1]+"']"));
+            $("[rel='"+order[1]+"']").after($("[rel='"+order[2]+"']"));
+        }
+
+</script>
+
+<script>
+    
+    var old_pos = 0;
+
+    hide_UI_page();
+
+
+    function showSnackBar() {
+        // update_size();
+        // var x = document.getElementById("snackbar");
+        // x.className = "show";
+        $("#snackbar").css({visibility:'visible'})
+
+
+    }
+
+    function hideSnackBar() {
+        // var x = document.getElementById("snackbar");
+        // //   x.className = "show";
+        // x.className = "";
+        $("#snackbar").css({visibility:'hidden'})
+    }
+
+    function showVidSnackbar() {
+        // update_size();
+        // var x = document.getElementById("vid_control_snackbar");
+        // x.className = "show";
+        // setTimeout(function () { x.className = x.className.replace("show", ""); }, 1000);
+        $("#vid_control_snackbar").css({visibility:'visible'})
+        setTimeout(function () {$("#vid_control_snackbar").css({visibility:'hidden'})}, 1000);
+
+
+    }
+
+    if (video_loaded){
+            add_ticks();
+        }
+    
+    update_size();
+
+
+    function update_size() {
+        $("#snackbar").width($("#vid1").width() / 4 + 20);
+        // $("#snackbar").height(20);
+        $("#vid_control_snackbar").height(20);
+        $("#vid_control_snackbar").width($("#vid1").width() / 4 + 20);
+
+        // var top_pos = $("#vid1").height() - 10
+        var top_pos = -10;
+
+
+        var left_pos = window.innerWidth / 2 + $("#vid1").width() / 2 - $("#snackbar").width() - 50;
+        // var left_pos2 = window.innerWidth / 2 - $("#vid_control_snackbar").width() / 2;
+        var left_pos2 = window.innerWidth / 2;
+
+        // console.log(left_pos);
+        $("#snackbar").css({ top: -$("#vid1").height()/2+6*20, left: 0, position: 'relative' });
+        $("#vid_control_snackbar").css({ top: -2*20, left: 0, position: 'relative' });
+
+        $(".vid_timeline").css({ top: -$(".vid_timeline").height()-10, left: 0, position: 'relative' });
+
+
+       
+        // add_ticks();
+    }
+
+    function hide_setting() {
+        if ($('.Setting').is(":visible")) {
+            // $('.Setting').css({visibility:'hidden'})
+            $('.Setting').hide(); 
+        } else {
+            // $('.Setting').css({visibility:'visible'})
+            $('.Setting').show(); 
+        }
+                // add_markers_to_slider();
+
+    }
+
+    function reload_and_hide() {
+        video = document.getElementById('vid1');
+        // alert(vid_src);
+        // video.load();
+
+        // if ($(".v_100").prop("checked")) { video.playbackRate = 1.0 }
+        // if ($(".v_75").prop("checked")) {
+        //     video.playbackRate = 0.75
+        // }
+        // if ($(".v_50").prop("checked")) {
+        //     video.playbackRate = 0.50
+        // }
+
+        $('.Setting').hide();
+        // wait_to_load_video();
+        $(".vid_control").css({visibility:'visible'})
+        $(".slidercontainer").show();
+        
+        update_size();
+        // add_markers_to_slider();
+
+    }
+
+    function hide_UI_page(){
+        $(".UI_page").hide();
+        $(".instruction_panel").hide();
+    }
+
+    function show_UI_page(){
+        $(".UI_page").show();
+        $(".instruction_panel").show();
+        reload_and_hide();
+    }
+
+
+    // slider drag and drop
+    var drag_and_drop = function () {
+        // add_markers_to_slider();
+
+        console.log("dragging on the slider")
+        video = document.getElementById('vid1');
+        var play_video_later = false;
+        if (!(video.paused)) {
+            // if the video was playing while being dragged 
+            //then play the video after finishing dragging
+            video.pause();
+            play_video_later = true;
+        }
+        // temporarily remove the slider listener
+        video.removeEventListener("timeupdate", update_slider);
+        // var mouseUp = false; 
+        // var mouseMove = false;
+
+        $(".slider").on('mousemove', function () {
+            // console.log("mousemove");
+            vid_duration = video.duration;
+            var drag_time = $(".slider").prop('value');
+            // console.log(drag_time)
+            video.currentTime = drag_time / 1000 * vid_duration;
+            // video.play(); 
+
+        });
+
+        $(".slider").on('mouseup', function () {
+
+            // add the update_slider function back on
+            console.log("Mouse up")
+            vid_duration = video.duration;
+            var drag_time = $(".slider").prop('value');
+            video.currentTime = drag_time / 1000 * vid_duration;
+
+
+            video.addEventListener("timeupdate", update_slider);
+            $(".slider").off("mousemove");
+            $(".slider").off("mouseup");
+            if (play_video_later) {
+                video.play();
+            }
+
+        });
+
+
+    };
+    $(".slider").on('mousedown', drag_and_drop);
+
+    
+
+</script>
+
+<script src="JS Files/select_participant.js"></script>
+<script src= "JS Files/data_collection.js"></script>
+<!-- <script src="JS Files/second_slider_operations.js"></script> -->
+<!-- <script src="JS Files/main.js"></script> -->
+
+
+<!-- <script src="JS Files/vid_pause.js"></script> -->
+
+
+</html>
