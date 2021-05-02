@@ -17,7 +17,7 @@
     
     <style type="text/css">
         body {
-            max-width: 2000px;
+            max-width: 1200px;
             background: white;
             margin-left: auto;
             margin-right: auto;
@@ -243,12 +243,12 @@
 
     <div class="tab-panels">
         <ul class="tabs">
-            <li rel="panel1" vid="video_Chinese/zoom_meeting_chinese.mp4" task="Task 1: Sending Zoom Invite"
-                Name="gtab">T-1:设置读书活动</li>
-            <li rel="panel2" vid="video_Chinese/email_rules.mp4" task="Task 2: Creating E-mail Rules"
-                Name="btab">T-2:创建邮件规则</li>
-            <li rel="panel3" vid="video_Chinese/bilibili_playlist.mp4"
-                task="Task 3: Creating YouTube Playlists" Name="btab">T-3:创建收藏夹</li>
+            <li rel="panel1" vid="videos/sending_zoom_invite_Trim_Trim.mp4" task="Task 1: Sending Zoom Invite"
+                Name="gtab">T-1:Zoom Invite</li>
+            <li rel="panel2" vid="videos/create email rule_Trim_Trim_2.mp4" task="Task 2: Creating E-mail Rules"
+                Name="btab">T-2:E-mail Rules</li>
+            <li rel="panel3" vid="videos/create youtube playlist_Trim_Trim.mp4"
+                task="Task 3: Creating YouTube Playlists" Name="btab">T-3:Youtube Playlists</li>
             <button onclick="hide_setting()" style="float: right;
             margin-right: 30px;
             font-size: 20px;
@@ -264,46 +264,56 @@
 
 
             <div id="instruct_1" class=instructions>
-                在疫情期间,你和你的朋友们决定使用zoom来举办一个线上读书活动。在活动上你们会分享你们上一周读过的好书。这个读书活动将会于<u>5月30日</u>开始，于<u>6月30日</u>结束，
-                在北京时间<u>每个周日</u>的<u>下午两点</u>举行，并且持续<u>两个小时</u>。除此之外你希望计算机会自动的记录每次的活动。
+                 <!-- Your friend, Erin Foster, will turn 37 on <u>March 27</u>. You and your friends won't be able to get together physically that day due to the pandemic. 
+                You would like to schedule a one-time <u>two-hour</u> meeting, called "<u>Erin's birthday party</u>", at <u>3pm</u> (Eastern Time) on that day so that the 
+                three of you (you, Bob and Erin) can celebrate Erin's brithday through a video call.  -->
+
+                During the pandemic, you and some of your friends decide to hold an online reading group on a regular basis, where each of you will talk about an interesting article you have
+                read in the prior week. This <u>two-hour</u> meeting is going to take place at <u>2:00 pm (Eastern Time)every Sunday until the end of April</u>. Additionally, you
+                would like to meeting to automatically record itself so you don't miss some of the highlights during the meeting. 
+           
+                <!-- You are to email them (Bob and Erin) the invitation
+                and their email addresses are <u>erin123@hotmail.com</u> and <u>bob123@hotmail.com</u>, respectively.              -->
                 <div style="margin-top:8px;">
-                    观看以下的视频有助于你学习如何设置该活动。
-                    访问<a href="https://zoom.us/signin" target="_blank">Zoom.us</a>!
+                    Watch the following video to help you schedule a zoom meeting and invite people to join.
+                    Visit <a href="https://zoom.us/signin" target="_blank">Zoom.us</a> now !
                 </div>  
 
                 <div style="margin-top:8px;font-size: 30px;">
-                    邮箱：<b>dgp_test_subject@outlook.com </b>|密码:<b>Uoft2020</b>
+                    e-mail:<b>dgp_test_subject@outlook.com </b>|password:<b>Uoft2020</b>
                 </div>
 
 
             </div>
 
             <div id="instruct_2" class=instructions>
-                eBay购物网站每天都会给你发很多邮件，而整理这些让你觉得无比烦恼。现在你决定在邮箱里创建一条规则。在该规则之下，邮箱会自动的把所有来自于eBay的邮件都归档到一个的文件夹下。你决定给这个文件夹取名叫做 “eBay”。
+                Facebook has been sending you emails on a regular basis. You would like to have all emails from Facebook to go automatically into 
+                its own folder called <u>"Facebook"</u> instead, including both <u>the future and the current emails</u>. 
+
                 <div style="margin-top:8px;">
-                    观看以下的视频有助于你学习如何设置邮件规则。
-                    访问<a href="https://outlook.live.com/mail/0/inbox" target="_blank">Outlook.com</a> !
+                    Watch the following video to help you configure Outlook to move emails into a specific email folder when it arrives.
+                    Visit <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1614824566&rver=7.0.6730.0&wp=LBI&wreply=https%3a%2f%2fwww.msn.com%2fen-ca%2fhomepage%2fSecure%2fPassport%3fru%3dhttps%253a%252f%252fwww.msn.com%252fen-ca%252f%253focid%253dmailsignout%2526pc%253dU591%2526pfr%253d1&lc=1033&id=1184&mkt=en-ca&pcexp=True" target="_blank">Outlook.com</a> now !
                 </div>
 
                 <div style="margin-top:8px;font-size: 30px;">
-                    邮箱:<b>dgp_test_subject@outlook.com </b>|密码:<b>Uoft2020</b>
+                    e-mail:<b>dgp_test_subject@outlook.com </b>|password:<b>Uoft2020</b>
                 </div>
             </div>
 
 
             <div id="instruct_3" class=instructions>
-                你在bilibili视频平台上看到了三个音乐视频:
-                    <div>1.希望的田野上</div>
-                    <div>2.我爱你中国</div>
-                    <div>3.友谊天长地久</div>
-                你非常喜爱这些视频，于是你打算在视频平台上创建一个收藏夹将这三个视频收藏起来。你打算给你的收藏夹起名叫做 “music”，并且将其设置为<u>随机播放模式</u>。
+                You came across three music videos on YouTube: <u>Sara Bareilles-Gravity</u>,<u>Taylor Swift-Love Story</u>, and <u>Katy Perry-Roar (Official)</u>. You really liked them. Now
+                you have decided to find these three music videos and create a playlist for
+                these three music videos so you can access them later. You are to name this playlist, <u>“My Favourite
+                    Songs”</u>. Additionally, you would like to keep the list <u>private</u> so they are only accessible to you
+                    and you prefer these songs to show up this order in the playlist: <u>Katy Perry-Roar (Official), Taylor Swift-Love Story, Sara Bareilles-Gravity</u>. 
                 <div style="margin-top:8px;">
-                        观看以下的视频有助于你学习如何创建收藏夹。
-                        访问 <a href="https://www.bilibili.com/?spm_id_from=666.25.b_696e7465726e6174696f6e616c486561646572.1" target="_blank">bilibili.com</a> now !
+                        Watch the following video to help you create a YouTube playlist for the selected songs. 
+                        Visit <a href="https://www.youtube.com/" target="_blank">YouTube.com</a> now !
                 </div>
 
                 <div style="margin-top:8px;font-size: 30px;">
-                    邮箱:<b>dgp_test_subject@outlook.com </b>|密码:<b>Uoft2020</b>
+                    e-mail:<b>dgp_test_subject@outlook.com </b>|password:<b>Uoft2020</b>
                 </div>
             </div>
 
@@ -392,15 +402,15 @@
 
     </section>
          <button class="task_status_but" id= "ready_but" onclick="start_task_timer()">
-        我已经准备好了!
+        I am ready to watch the video!
     </button>
 
     <button class="task_status_but" id = "finish_but" onclick= "stop_task_timer()">
-        我已经完成了任务!
+        I have completed the task!
     </button>
 
     <button class="task_status_but" id = "survey_but" onclick = "load_Qnaire()">
-        填写问卷!
+        Take a short survey!
     </button>
 
     <section id="videos">
@@ -416,8 +426,8 @@
 
         <section class = "vid_timeline">
             <div id="snackbar" onclick="play()">
-                <div id = "bar_txt">自动暂停</div>
-                <div style="font-size: 20px;">点击继续播放</div>
+                <div id = "bar_txt">Auto Pause</div>
+                <div style="font-size: 20px;">Click here to continue</div>
                 <!-- <div id="time_left" style="display: inline;">Snackbar!!!</div> -->
             </div>
             <div id="vid_control_snackbar">
@@ -431,10 +441,8 @@
                 <input type="range" min="1" max="1000" value="0" class="slider" id="myRange">
             </div>
             
-            <div class="vid_play_time" style="background-color: black;">
-                <div class="vid_current_time" style="color: white;">00:00</div>
-                <div style="color: white;">/</div>
-                <div class="vid_total_length"  style="color: white;">00:00</div>
+            <div class="vid_play_time">
+                <div class="vid_current_time">00:00</div>/<div class="vid_total_length">00:00</div>
             </div>
     
             <div class="vid_control">
@@ -465,7 +473,7 @@
 </body>
 
 <script src="bower/bower_components/jquery/dist/jquery.js"></script>
-<script src="JS Files/vid_pause_c.js"></script>
+<script src="JS Files/vid_pause.js"></script>
 <!-- <script src="JS Files/checkbox.js"></script> -->
 <!-- <script src="JS Files/vid_pause.js"></script> -->
 <script>
