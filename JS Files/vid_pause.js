@@ -35,9 +35,9 @@ var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300
 vid_2_speed = 178.29;
 
 
-// var vid_3_pause_array = remove_redundant_pause([13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94]);
+var vid_3_pause_array = remove_redundant_pause([13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94]);
 // var vid_3_pause_array = [13.71, 17.59,23.5,32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94];
-var vid_3_pause_array = [13.71,23.5];
+// var vid_3_pause_array = [13.71,23.5];
 
 var vid_3_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300,300,300,300,300,300,300,300];
 vid_3_speed = 165.62;
@@ -79,8 +79,9 @@ var pausing_function = function(){
     {
         if (video.paused!=true && pause_on==true){
             video.pause();
+        
             pause_count++; 
-            pause_loc.push(video.currentTime); 
+            pause_loc_a.push(video.currentTime); 
             // blur the video
             // blur_video();
             darken_video(); 
@@ -428,7 +429,7 @@ function pause(){
         pause_count++; 
         $("#bar_txt").text("视频暂停"); 
         start_the_pause_timer();
-        pause_loc.push(video.currentTime); 
+        pause_loc_m.push(video.currentTime); 
     }
     // clearTimeout(myTimer);
     

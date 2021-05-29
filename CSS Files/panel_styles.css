@@ -53,6 +53,11 @@ body {
     background:#f08409;
 }
 
+.tab-panels ul li.active4 {
+    color: #fff;
+    background:purple;
+}
+
 .tab-panels .panel {
     display: none;
     /* this is the background colour of the panel content */

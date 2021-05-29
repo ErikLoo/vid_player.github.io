@@ -243,12 +243,12 @@
 
     <div class="tab-panels">
         <ul class="tabs">
-            <li rel="panel1" vid="video_Chinese/training.mp4" task="Task 1: Sending Zoom Invite"
-                Name="gtab">T-1:参照组</li>
-            <li rel="panel2" vid="video_Chinese/training.mp4" task="Task 2: Creating E-mail Rules"
-                Name="btab">T-2:放慢组</li>
-            <li rel="panel3" vid="video_Chinese/training.mp4"
-                task="Task 3: Creating YouTube Playlists" Name="btab">T-3:暂停组</li>
+            <li rel="panel1" vid="videos/training.mp4" task="Task 1: Sending Zoom Invite"
+                Name="gtab">T-1:Control</li>
+            <li rel="panel2" vid="videos/training.mp4" task="Task 2: Creating E-mail Rules"
+                Name="btab">T-2:Slow</li>
+            <li rel="panel3" vid="videos/training.mp4"
+                task="Task 3: Creating YouTube Playlists" Name="btab">T-3:Pause</li>
             <button onclick="hide_setting()" style="float: right;
             margin-right: 30px;
             font-size: 20px;
@@ -265,14 +265,14 @@
 
             <div id="instruct_1" class=instructions>
                 <div style="margin-top:8px;">
-                    观看以下视频。
+                    Watch the following video
                 </div>  
 
             </div>
 
             <div id="instruct_2" class=instructions>
                 <div style="margin-top:8px;">
-                    观看以下视频。
+                    Watch the following video
                 </div>
 
             </div>
@@ -280,7 +280,7 @@
 
             <div id="instruct_3" class=instructions>
                 <div style="margin-top:8px;">
-                        观看以下视频。
+                    Watch the following video
                 </div>
 
             </div>
@@ -369,16 +369,16 @@
         </form>
 
     </section>
-         <button class="task_status_but" id= "ready_but" onclick="start_task_timer()">
-        我已经准备好了!
+         <button class="task_status_but" id= "ready_but" onclick="start_total_timer()">
+        I am ready!
     </button>
 
-    <button class="task_status_but" id = "finish_but" onclick= "stop_task_timer()">
-        我已经完成了任务!
+    <button class="task_status_but" id = "finish_but" onclick= "stop_total_timer()">
+        I have completed the task!
     </button>
 
     <button class="task_status_but" id = "survey_but" onclick = "load_Qnaire()">
-        填写问卷!
+        Fill in a Questionnaire
     </button>
 
     <section id="videos">
@@ -394,8 +394,8 @@
 
         <section class = "vid_timeline">
             <div id="snackbar" onclick="play()">
-                <div id = "bar_txt">自动暂停</div>
-                <div style="font-size: 20px;">点击继续播放</div>
+                <div id = "bar_txt">Auto Pause</div>
+                <div style="font-size: 20px;">Click to continue</div>
                 <!-- <div id="time_left" style="display: inline;">Snackbar!!!</div> -->
             </div>
             <div id="vid_control_snackbar">

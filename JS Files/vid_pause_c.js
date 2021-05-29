@@ -8,7 +8,7 @@ var time_start_pause = 0;
 var time_start_play = 0;
 
 // var myTimer; 
-var myCountUpTimer; 
+var pauseTimer; 
 var time_passed = 0;
 
 var listenerAttached = true; 
@@ -217,7 +217,7 @@ function  start_the_pause_timer(){
     time_passed=0;
     var total_time = duration_array[count]; 
     showSnackBar();
-    myCountUpTimer = setInterval(function() {
+    pauseTimer = setInterval(function() {
         pause_duration++; 
         // if (intent_to_pause_during_thumb==false){
         //     // $("#time_left").text("Resume playing in " + (total_time-time_passed).toString() +" secs"); 
@@ -376,7 +376,7 @@ function play(){
     // clearTimeout(myVar);
     if (video.paused){
         // clearTimeout(myTimer);
-        clearInterval(myCountUpTimer);
+        clearInterval(pauseTimer);
         pause_duration = pause_duration + time_passed;
         // duration_array[count] = time_passed; 
         // console.log(time_passed + " s has passed");
