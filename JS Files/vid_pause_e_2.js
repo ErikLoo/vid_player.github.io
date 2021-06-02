@@ -19,14 +19,14 @@ var listenerAttached = true;
 // var vid_1_pause_array = [118.869042];
 // var vid_1_pause_array = [0,6.07,107.85,118.869042];
 
-var vid_1_pause_array = [10.39,24.678,41.8,51.979,61.245,78.79,100.8,109.5,124.77];
+var vid_1_pause_array = [6.92018, 21.361675, 39.192402, 46.12265, 53.648248, 66.905594,87.158375, 107.124593, 122.928764];
 var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
 vid_1_speed = 154.85;
 
 // properties of vid 2
 
 // var vid_2_pause_array = remove_redundant_pause([9.58, 12.21, 14.41, 20.67, 26.49, 33.25, 37.01, 40.52, 42.48, 45.52, 49.26, 56.45, 60.82, 72.33, 77.93, 84.17, 88.29, 95.36, 98.97, 107.13, 109.21, 121.85]);
-var vid_2_pause_array = [9.948125, 17.151636, 24.832986, 35.204589, 47.095008, 60.935513, 76.102451, 91.676645, 98.349014]
+var vid_2_pause_array = [15.733544, 23.16689, 31.278524, 52.749747, 65.32822, 82.468931,97.480015,112.097884,131.592609]
 var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
 vid_2_speed = 178.29;
 
@@ -231,7 +231,7 @@ function  start_the_pause_timer(){
         // }
 
         // showSnackBar();
-        console.log("Time passed during pause : " + pause_duration + " s");
+        // console.log("Time passed during pause : " + pause_duration + " s");
 
       }, 1000);
     
@@ -427,7 +427,7 @@ function pause(){
         video.pause();    
         // v_current_t = video.currentTime;
         pause_count_m++; 
-        $("#bar_txt").text("视频暂停"); 
+        $("#bar_txt").text("Video Paused"); 
         start_the_pause_timer();
         pause_loc_m.push(video.currentTime); 
         console.log("paused at: " + video.currentTime);

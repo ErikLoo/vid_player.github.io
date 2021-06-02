@@ -90,6 +90,7 @@ function stop_total_timer(){
     output["pause_duration"] = pause_duration; 
     output["pause_loc_a"] = pause_loc_a; 
     output["pause_loc_m"] = pause_loc_m; 
+    output["replayTime"] = replayTime; 
 
 
     push_to_stack();
