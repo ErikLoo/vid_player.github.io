@@ -19,7 +19,7 @@ var listenerAttached = true;
 // var vid_1_pause_array = [118.869042];
 // var vid_1_pause_array = [0,6.07,107.85,118.869042];
 
-var vid_1_pause_array = [11,16,32,27.24, 32.01, 38.18, 44.4, 51,60, 71.56, 78.91,89.21,107.85];
+var vid_1_pause_array = remove_redundant_pause([11,16,32,27.24, 32.01, 38.18, 44.4, 51,60, 71.56, 78.91,89.21,107.85]);
 var vid_1_duration_array = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
 vid_1_speed = 154.85;
 
@@ -29,13 +29,13 @@ vid_1_speed = 154.85;
 // vid_2_speed = 178.29;
 
 // var vid_2_pause_array = remove_redundant_pause([9.58, 12.21, 14.41, 20.67, 26.49, 33.25, 37.01, 40.52, 42.48, 45.52, 49.26, 56.45, 60.82, 72.33, 77.93, 84.17, 88.29, 95.36, 98.97, 107.13, 109.21, 121.85]);
-var vid_2_pause_array = [9.58, 20.67, 26.49, 45.52, 49.26, 56.45, 64,84.17, 95.36,100,109.21, 121.85];
+var vid_2_pause_array =remove_redundant_pause ([9.58, 20.67, 26.49, 45.52, 49.26, 56.45, 64,84.17, 95.36,100,109.21, 121.85]);
 
 var vid_2_duration_array = [300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0]
 vid_2_speed = 178.29;
 
 
-var vid_3_pause_array = remove_redundant_pause([13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94]);
+var vid_3_pause_array = remove_redundant_pause([13.71, 17.59, 32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85]);
 // var vid_3_pause_array = [13.71, 17.59,23.5,32.98, 36.58, 43.72, 55.1, 64.83, 74.35, 81.16, 89.67, 109.08, 114.85, 133.19, 142.18, 150.94];
 // var vid_3_pause_array = [13.71,23.5];
 
@@ -427,7 +427,7 @@ function pause(){
         video.pause();    
         // v_current_t = video.currentTime;
         pause_count++; 
-        $("#bar_txt").text("视频暂停"); 
+        $("#bar_txt").text("Video Paused"); 
         start_the_pause_timer();
         pause_loc_m.push(video.currentTime); 
     }
@@ -441,7 +441,7 @@ function remove_redundant_pause(old_array){
     new_array.push(old_t);
     for (i=0;i<old_array.length;i++){
         //enforce that the min duration between pauses must be 5 secs or more
-        if(old_array[i]-new_array[new_array.length-1]>=5){
+        if(old_array[i]-new_array[new_array.length-1]>5){
             new_array.push(old_array[i]);
         }
         old_t = old_array[i];
